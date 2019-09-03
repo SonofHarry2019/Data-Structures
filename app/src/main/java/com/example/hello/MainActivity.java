@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         names.add("Teller");
         System.out.println("The names are " + names);
 
-        // TODO #2: output the list with each name on a separate line of output
+        // output the list with each name on a separate line of output
         for (int i = 0; i < names.size(); i++) {
             System.out.println("The separated names are " + names.get(i));
         }
@@ -36,16 +36,17 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Integer> numbers = new ArrayList<>();
         numbers.add(rand.nextInt(10));
 
-        // TODO #3: generate and store 2 more random ints in the list
+        // generate and store 2 more random ints in the list
         numbers.add(rand.nextInt(12));
         numbers.add(rand.nextInt(13));
 
-        // TODO #4: output the even ints in the list
+        // output the even ints in the list
         for (int i = 1; i<numbers.size(); i++ ) {
             if (numbers.get(i)%2 == 0) {
                 System.out.print("The even number is " + numbers.get(i));
             }
         }
+        System.out.println();
         // read an int from standard input
         Scanner sc = new Scanner(System.in);
         System.out.println("\nHow many more ints do you want to generate? ");
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println("\nThe " + numbers.size() + " #s are " + numbers);
 
-        // TODO #5: output the sum of the even ints in to the list
+        // output the sum of the even ints in to the list
         int sum = 0;
         for (int i = 1; i<numbers.size(); i++ ) {
             if (numbers.get(i)%2 == 0) {
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println("The added total even number is " + sum);
 
-        // TODO #6: output the largest int in the list
+        // output the largest int in the list
         int max = Integer.MIN_VALUE;
         for(int i=0; i<numbers.size(); i++){
             if(numbers.get(i) >= max){
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("The max number is " + max);
 
         // output the odd integers in the list
-        System.out.println("the odd integers in the list are: ");
+        System.out.println("The odd integers in the list are: ");
         for (int num : numbers) {
             if (num%2 != 0) {
                 System.out.print(num + "\t");
@@ -82,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println();
 
-        // TODO #7: how many odd int are in the list
-        System.out.println("the odd integers in the list are: ");
+        // how many odd int are in the list
+        System.out.println("The amount of odd integers in the list are: ");
         int count = 0;
         for (int num : numbers) {
             if (num%2 != 0) {
@@ -93,6 +94,14 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(count);
 
         // TODO #8: how many unique odd ints are in the list
+        System.out.println("The unique odd integers in the list are: ");
+        int count1 = 0;
+        for (int num : numbers) {
+            if (num%2 == 0) {
+                count1 = count1 + 1;
+            }
+        }
+        System.out.println(count1);
 
         System.out.println("\nThe lengths of the names are: ");
         for (String name : names) {
@@ -100,12 +109,16 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println();
 
-        // TODO #9: which names have [length]
+        // which names have [length]
         for (String name : names) {
             System.out.println("The names that have lengths are " + name);
         }
         System.out.println();
 
         // TODO #10: which names are the same length as a # in the ints list
+        for (String name : names) {
+            System.out.println("The names the match the length as in the list are " + name);
+        }
+        System.out.println();
     }
 }
