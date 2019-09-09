@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("The max number is " + max);
 
         // output the odd integers in the list
-        System.out.println("The odd integers in the list are: ");
+        System.out.println("The odd integers are: ");
         for (int num : numbers) {
             if (num%2 != 0) {
                 System.out.print(num + "\t");
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println();
 
         // how many odd int are in the list
-        System.out.println("The amount of odd integers in the list are: ");
+        System.out.println("The total amount of odds: ");
         int count = 0;
         for (int num : numbers) {
             if (num%2 != 0) {
@@ -93,15 +93,23 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println(count);
 
-        // TODO #8: how many unique odd ints are in the list
-        System.out.println("The unique odd integers in the list are: ");
         int count1 = 0;
         for (int num : numbers) {
-            if (num%2 == 0) {
-                count1 = count1 + 1;
+            if (num == 1) {
+                count1++;
             }
         }
-        System.out.println(count1);
+        System.out.print("The total number of 1's are " + count1);
+
+        // how many unique odd ints are in the list
+        System.out.println("\nThe unique odd integers in the list are: ");
+        int count2 = 0;
+        for (int num : numbers) {
+            if (num%2 == 0) {
+                count2 = count + 1;
+            }
+        }
+        System.out.println(count2);
 
         System.out.println("\nThe lengths of the names are: ");
         for (String name : names) {
@@ -117,8 +125,11 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO #10: which names are the same length as a # in the ints list
         for (String name : names) {
-            System.out.println("The names the match the length as in the list are " + name);
+            for (int num : numbers) {
+                if (num % 2 == 0) {
+                    System.out.println("The names the match the length as in the list are " + name);
+                }
+            }
         }
-        System.out.println();
     }
 }
