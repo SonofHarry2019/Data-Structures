@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,122 +15,118 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.print("\n\nHello, DS Lab #2 - Lists!\n");
+        System.out.println("\n\nHello, DS Lab #3 - ArrayList!\n");
 
-        // store 2 names in a list
-        ArrayList<String> names = new ArrayList();
-        names.add("Xavier");
-        names.add("Howard");
-        System.out.println("The names are " + names);
-
-        names.add("Jackson");
-        names.add("Teller");
-        System.out.println("The names are " + names);
-
-        // output the list with each name on a separate line of output
-        for (int i = 0; i < names.size(); i++) {
-            System.out.println("The separated names are " + names.get(i));
-        }
-
-        // store a random int in a list
+        // store 10 random values [0..100] in an ArrayList
         Random rand = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
-        numbers.add(rand.nextInt(10));
-
-        // generate and store 2 more random ints in the list
-        numbers.add(rand.nextInt(12));
-        numbers.add(rand.nextInt(13));
-
-        // output the even ints in the list
-        for (int i = 1; i<numbers.size(); i++ ) {
-            if (numbers.get(i)%2 == 0) {
-                System.out.print("The even number is " + numbers.get(i));
-            }
+        for (int i = 1; i <= 10; i++) {
+            int num = rand.nextInt(100 + 1);    // random integer in [0..100}
+            numbers.add(num);
         }
-        System.out.println();
-        // read an int from standard input
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\nHow many more ints do you want to generate? ");
-        int numMoreElements = sc.nextInt();
-        for (int i = 0; i < numMoreElements; i++) {
-            numbers.add(rand.nextInt(10));
-        }
-        System.out.println("\nThe " + numbers.size() + " #s are " + numbers);
+        System.out.println("The " + numbers.size() + " integers are " + numbers);
 
-        // output the sum of the even ints in to the list
-        int sum = 0;
-        for (int i = 1; i<numbers.size(); i++ ) {
-            if (numbers.get(i)%2 == 0) {
-                sum = sum + numbers.get(i);
-            }
+        // output the ArrayList using a for-loop
+        System.out.println("\nEach integer on a separate line");
+        for (int i = 0; i < numbers.size(); i++) {
+            System.out.println(numbers.get(i));
         }
-        System.out.println("The added total even number is " + sum);
+        System.out.println("\n");
 
-        // output the largest int in the list
-        int max = Integer.MIN_VALUE;
-        for(int i=0; i<numbers.size(); i++){
-            if(numbers.get(i) >= max){
-                max = numbers.get(i);
-            }
+        // use a for-loop, output each line in format "index \t element"
+        for (int i = 0; i < numbers.size(); i++) {
+            System.out.println(numbers.get(i) + " \t " + numbers);
         }
-        System.out.println("The max number is " + max);
+        System.out.println("\n");
 
-        // output the odd integers in the list
-        System.out.println("The odd integers are: ");
+        // use a for-loop to output the integers in reverse order
+        for (int i = 1; i <= 10; i++) {
+            int num = rand.nextInt(100 + 1);
+        }
+        Collections.reverse(numbers);
+        System.out.println("The " + numbers.size() + " reverse integers are " + numbers);
+
+        // output the ArrayList using an enchanced for (foreach) loop
+        System.out.println("\nAgain, each integer in a separate line:");
         for (int num : numbers) {
-            if (num%2 != 0) {
-                System.out.print(num + "\t");
+            System.out.println(num);
+        }
+
+        System.out.println("\nThe original integers are " + numbers);
+
+        System.out.println("\tThe even elements in the list:\t");
+        for (int num : numbers) {
+            if (num % 2 == 0) {
+                System.out.println(num + " ");
             }
         }
         System.out.println();
 
-        // how many odd int are in the list
-        System.out.println("The total amount of odds: ");
+        // use an enhanced-for, output integers separated by commas
+        System.out.println("The integers with a comma:\t");
+        for (int num : numbers) {
+            System.out.print(num + ", ");
+        }
+        System.out.println();
+
+        // determine (boolean) if the list has any even elements
+        System.out.println("\nList has even elements?: " + isEven(numbers));
+
+        // how many of the elements in the list are even
         int count = 0;
         for (int num : numbers) {
             if (num%2 != 0) {
                 count = count + 1;
             }
         }
-        System.out.println(count);
+        System.out.println("There are " + count + " even integers");
 
-        int count1 = 0;
+        // determine (boolean) if all the elements in the list are even
+        System.out.println("\nThe list has even elements: " + isEven(numbers));
+
+        // what is the maximum element in the list
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<numbers.size(); i++){
+            if(numbers.get(i) >= max){
+                max = numbers.get(i);
+            }
+        }
+        System.out.println("\nThe max number is " + max);
+
+        // TODO #8: what is the index to the minimum element in the list
+
+        // what percentage of the elements in the list are odd
+        int sumOdd = 0;
         for (int num : numbers) {
-            if (num == 1) {
-                count1++;
+            if (num %2 != 0) {
+                sumOdd++;
             }
         }
-        System.out.print("The total number of 1's are " + count1);
+        float percentOdd = (float) sumOdd/numbers.size() * 100;
+        System.out.println("\t" + percentOdd + "% of the elements are odd.");
 
-        // how many unique odd ints are in the list
-        System.out.println("\nThe unique odd integers in the list are: ");
-        int count2 = 0;
-        for (int num : numbers) {
-            if (num%2 == 0) {
-                count2 = count + 1;
+        // build a new list from only every 3rd element of the integers
+        ArrayList<Integer> number3rd = new ArrayList<>();
+        for (int i = 0; i < numbers.size(); i++) {
+            number3rd.add(numbers.get(2));
+        }
+        System.out.println("\nThe original list is \t" + numbers);
+        System.out.println("Every 3rd element is \t" + number3rd);
+        // TODO #9: fix [numbers3rd] so the new list is every 3rd element
+
+        // TODO #10: store 333 at every index that is divisible by 3
+        // TODO #11: replace every element that is divisible by 5 with 555
+        //  sort the list of number
+
+
+    }
+
+    public static boolean isEven(ArrayList<Integer> numbers) {
+        for (int num = 0; num < numbers.size(); num++) {
+            if (num%2 != 0) {
+                return true;
             }
         }
-        System.out.println(count2);
-
-        System.out.println("\nThe lengths of the names are: ");
-        for (String name : names) {
-            System.out.println(name + "-" + name.length() + "\t");
-        }
-        System.out.println();
-
-        // which names have [length]
-        for (String name : names) {
-            System.out.println("The names that have lengths are " + name);
-        }
-        System.out.println();
-
-        // TODO #10: which names are the same length as a # in the ints list
-        for (String name : names) {
-            for (int num : numbers) {
-                if (num % 2 == 0) {
-                    System.out.println("The names the match the length as in the list are " + name);
-                }
-            }
-        }
+        return false;
     }
 }
