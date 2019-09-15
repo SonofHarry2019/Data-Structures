@@ -93,7 +93,14 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println("\nThe max number is " + max);
 
-        // TODO #8: what is the index to the minimum element in the list
+        // what is the index to the minimum element in the list
+        int min = Integer.MAX_VALUE;
+        for(int i=0; i<numbers.size(); i++){
+            if(numbers.get(i) <= min){
+                min = numbers.get(i);
+            }
+        }
+        System.out.println("\nThe min number is " + min);
 
         // what percentage of the elements in the list are odd
         int sumOdd = 0;
@@ -112,18 +119,24 @@ public class MainActivity extends AppCompatActivity {
         }
         System.out.println("\nThe original list is \t" + numbers);
         System.out.println("Every 3rd element is \t" + number3rd);
-        // TODO #9: fix [numbers3rd] so the new list is every 3rd element
+        // fix [numbers3rd] so the new list is every 3rd element
 
         // TODO #10: store 333 at every index that is divisible by 3
+        for (int num : numbers) {
+            if (num%3 == 3) {
+                num = 333;
+                System.out.println(num);
+            }
+        }
+        System.out.println(numbers);
+
         // TODO #11: replace every element that is divisible by 5 with 555
         //  sort the list of number
-
-
     }
 
     public static boolean isEven(ArrayList<Integer> numbers) {
-        for (int num = 0; num < numbers.size(); num++) {
-            if (num%2 != 0) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (i%2 != 0 ) {
                 return true;
             }
         }
