@@ -15,97 +15,146 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("\n\nHello, DS Lab #5 - Driver for Grade Class!\n");
+        System.out.println("\n\nHello, DS Lab #3 - ArrayList!\n");
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter two letter grades on separate lines: ");
-        String g1 = sc.nextLine();
-        String g2 = sc.nextLine();
-
-        int g1hours = 1;
-        int g2hours = 4;
-
-        // output the first grade, format "letter::hours"
-        output(g1hours, g1);
-
-        // output the second grade, format "letter::hours"
-        output(g2hours, g2);
-
-        // output the quality points of g1
-        int gQuality = gradeQuality(g1);
-        int gQuality1 = gradeQuality(g2);
-        System.out.println("g1 quality is " + gQuality);
-        System.out.println("g2 quality is " + gQuality1);
-
-        // calculate the grade point average
-        int GPA = (int) calculateGPA(g1, g1hours, g2, g2hours);
-        System.out.println("The GPA is " + GPA);
-
-        Grade grade1 = new Grade();
-        String grade1letter = grade1.getLetter();
-        int grade1hours = grade1.getHours();
-        System.out.println("\nGrade1 is:\t" + grade1letter + " " + grade1hours);
-
-        // create a parameterized constructor and then uncomment the following statement.
-        Grade grade2 = new Grade("F", 4);
-        System.out.println("Grade2 is:\t" + grade2.getLetter() + " " + grade2.getHours());
-
-        // create Grade.toString(). format "letter::hours"
-        System.out.println("Grade1 is " + grade1 + " and Grade2 is " + grade2);
-
-        // create gpa function, return (float) gpa of 2 Grade objects
-        float GPA1 = (float) calFloatGPA(g1, g1hours, g2, g2hours);
-        System.out.println("\nThe GPA in float is " + GPA1);
-
-        //change grade1's letter grade to "A"
-        grade1.setLetter("A");
-
-        // change grade2's hours to 0
-        grade2.setHours(0);
-        System.out.println("\nThe grade are:\t" + grade1 + " " + grade2);
-
-        // what is the average of the two grades credit hours
-        float average = (grade1.getHours() + grade2.getHours()) / 2;
-        System.out.println("\nThe average of the two grades are " + average);
-
-        // which of the grades (1 or 2) has the higher credit hour
-        System.out.print("\nThe highest grade is: " );
-        if (grade1.getHours() > grade2.getHours()) {
-            System.out.println(grade1);
-        } else {
-            System.out.println(grade2);
+        // store 10 random values [0..100] in an ArrayList
+        Random rand = new Random();
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            int num = rand.nextInt(100 + 1);    // random integer in [0..100}
+            numbers.add(num);
         }
-    }
+        System.out.println("The " + numbers.size() + " integers are " + numbers);
 
-    private static double calculateGPA(String g1, int g1hours, String g2, int g2hours) {
-        int gValue = gradeQuality(g1) * g1hours;
-        int gValue1 = gradeQuality(g2) * g2hours;
-        return (gValue + gValue1) / (g1hours + g2hours);
-    }
-
-    private static int gradeQuality(String g) {
-        if (g.equalsIgnoreCase("a")) {
-            return 4;
-        } else if (g.equalsIgnoreCase("b")) {
-            return 3;
-        } else if (g.equalsIgnoreCase("c")) {
-            return 2;
-        } else if (g.equalsIgnoreCase("d")) {
-            return 1;
-        } else if (g.equalsIgnoreCase("f")) {
-            return 0;
-        } else {
-            return 0;
+        // output the ArrayList using a for-loop
+        System.out.println("\nEach integer on a separate line");
+        for (int i = 0; i < numbers.size(); i++) {
+            System.out.println(numbers.get(i));
         }
+        System.out.println("\n");
+
+        // use a for-loop, output each line in format "index \t element"
+        for (int i = 0; i < numbers.size(); i++) {
+            System.out.println(numbers.get(i) + " \t " + numbers);
+        }
+        System.out.println("\n");
+
+        // TODO 2: use a for-loop to output the integers in reverse order
+        System.out.println("\nEach integer on a separate line");
+        for (int i = 9; i < numbers.size() - 1; i--) {
+            System.out.println(i + "\t" + numbers.get(i));
+        }
+        System.out.println("The " + numbers.size() + " reverse integers are " + numbers);
+
+        // output the ArrayList using an enhanced for (foreach) loop
+        System.out.println("\nAgain, each integer in a separate line:");
+        for (int num : numbers) {
+            System.out.println(num);
+        }
+
+        System.out.println("\nThe original integers are " + numbers);
+
+        System.out.println("\tThe even elements in the list:\t");
+        for (int num : numbers) {
+            if (num % 2 == 0) {
+                System.out.println(num + " ");
+            }
+        }
+        System.out.println();
+
+        // use an enhanced-for, output integers separated by commas
+        System.out.println("The integers with a comma:\t");
+        for (int num : numbers) {
+            System.out.print(num + ", ");
+        }
+        System.out.println();
+
+        // determine (boolean) if the list has any even elements
+        System.out.println("\nList has even elements?: " + isEven(numbers));
+
+        // how many of the elements in the list are even
+        int count = 0;
+        for (int num : numbers) {
+            if (num%2 != 0) {
+                count = count + 1;
+            }
+        }
+        System.out.println("There are " + count + " even integers");
+
+        // determine (boolean) if all the elements in the list are even
+        System.out.println("\nThe list has even elements: " + isEven(numbers));
+
+        // what is the maximum element in the list
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<numbers.size(); i++){
+            if(numbers.get(i) >= max){
+                max = numbers.get(i);
+            }
+        }
+        System.out.println("\nThe max number is " + max);
+
+        // what is the index to the minimum element in the list
+        int min = Integer.MAX_VALUE;
+        for(int i=0; i<numbers.size(); i++){
+            if(numbers.get(i) <= min){
+                min = numbers.get(i);
+            }
+        }
+        System.out.println("\nThe min number is " + min);
+
+        // what percentage of the elements in the list are odd
+        int sumOdd = 0;
+        for (int num : numbers) {
+            if (num %2 != 0) {
+                sumOdd++;
+            }
+        }
+        float percentOdd = (float) sumOdd/numbers.size() * 100;
+        System.out.println("\t" + percentOdd + "% of the elements are odd.");
+
+        // build a new list from only every 3rd element of the integers
+        ArrayList<Integer> numbers3rd = new ArrayList<>();
+        for(int i=2; i<numbers.size(); i=i+3) {
+            numbers3rd.add(numbers.get(i));
+        }
+
+        System.out.println("\nThe original list is \t" + numbers);
+        System.out.println("Every 3rd element is \t" + numbers3rd);
+        // fix [numbers3rd] so the new list is every 3rd element
+
+        // TODO #10: store 333 at every index that is divisible by 3
+        int storeNum = 333;
+        for (int num : numbers) {
+            if (num%3 == 3) {
+                num = storeNum;
+                numbers.add(333);
+            }
+        }
+        System.out.println(storeNum);
+
+        // TODO #11: replace every element that is divisible by 5 with 555
+        //  sort the list of number
+        int i = 0;
+        int reNum = 555;
+        for (int num : numbers) {
+            if (num%5 == 0) {
+                numbers.add(reNum);
+            }
+        }
+        System.out.println(numbers);
+
+        System.out.println("\nThe original list of numbers is " + numbers);
+        numbers.sort(Integer::compareTo); // sort using a method reference
+        numbers.sort((n1, n2) -> n1.compareTo(n2)); // sort using a comparable
+        System.out.println("The sorted list of numbers is " + numbers);
     }
 
-    private static void output(int hours, String letter) {
-        System.out.println(letter + "::" + hours);
-    }
-
-    private static float calFloatGPA(String g1, int g1hours, String g2, int g2hours) {
-        float gValue = gradeQuality(g1) * g1hours;
-        float gValue1 = gradeQuality(g2) * g1hours;
-        return (gValue + gValue1) / (g1hours + g2hours);
+    public static boolean isEven(ArrayList<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (i%2 != 0 ) {
+                return true;
+            }
+        }
+        return false;
     }
 }
