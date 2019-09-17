@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         // create a parameterized constructor and then uncomment the following statement.
         Grade grade2 = new Grade("F", 0);
-        System.out.println("Grade2 is:\t" + grade2.getLetter() + " " + grade2.getHours());
+        System.out.println("Grade2 is:\t" + grade2.getLetter() + " " + grade2.getHours());d
 
         // create Grade.toString(). format "letter::hours"
         System.out.println("Grade1 is " + grade1 + " and Grade2 is " + grade2);
