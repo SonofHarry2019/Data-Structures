@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("\nFirst person: " + people.get(0));
 
-        people.add(0, new Person("Castiel", LocalDate.of(1997, 3, 21)));
+        people.add(0, new Person("Crowley", LocalDate.of(1997, 3, 21)));
         System.out.println("\nThe new list is: " + people);
 
         people.add(new Person("Dean", LocalDate.of(1998, 4, 22)));
         System.out.println("\nThe updated list is: " + people);
 
-        people.remove(2);
+        people.remove(people.size() / 2);
         System.out.println("\nThe removed list is: " + people);
 
         int size = people.size();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("\nFirst person in a stack " + stackOfPeople.get(0));
 
-        stackOfPeople.push(new Person("Henry", LocalDate.of(2002, 8, 26)));
+        stackOfPeople.add(0, new Person("Henry", LocalDate.of(2002, 8,26)));
         System.out.println("\nNew stack of people " + stackOfPeople);
 
         stackOfPeople.push(new Person("Ivan", LocalDate.of(2003, 9, 27)));
@@ -71,8 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("\nThere are " + stackOfPeople.size() + " people in the stack");
 
-        Person lastStack = stackOfPeople.get(people.size() - 1);
-        System.out.println("\nLast person in the stack is: " + lastStack);
+        System.out.println("\nLast person in the stack is: " + stackOfPeople.get(stackOfPeople.size() - 1));
 
         Queue queueOfPeople = new LinkedList();
         queueOfPeople.add(new Person("Jack", LocalDate.of(2004, 10, 28)));
@@ -94,35 +93,35 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("\nThe first name in the queue is " + dequeOfPeople.peek());
 
-        dequeOfPeople.addFirst(new Person("Quill", LocalDate.of(2010, 5, 4)));
-
+        dequeOfPeople.addFirst(new Person("Quill", LocalDate.of(2010, 5, 4)));;
         System.out.println("\nThe new list is " + dequeOfPeople);
 
-        dequeOfPeople.add((new Person("Ryan", LocalDate.of(2011, 6, 5))));
+        dequeOfPeople.add(new Person("Ryan", LocalDate.of(2011, 6, 5)));
+
+        dequeOfPeople.add((new Person("Sam", LocalDate.of(2012, 7, 6))));
         System.out.println("\nThe second list is " + dequeOfPeople);
 
         System.out.println("\nThe amount of deques are " + dequeOfPeople.size());
 
         System.out.println("\nThe last name is " + dequeOfPeople.peekLast());
 
-        // 0919 DriveThru
         System.out.println("\nWelcome to the Drive Thru");
 
+        // 0919 DriveThruLane
         ArrayList<Car> listOfCars = new ArrayList<>();
-        Car car = new Car(24, 48);
+        Car car = new Car(24);
         listOfCars.add(car);
-        listOfCars.add(new Car(25, 50));
-        listOfCars.add(new Car(26, 52));
-        listOfCars.size();
+        listOfCars.add(new Car(25));
+        listOfCars.add(new Car(26));
         System.out.println("\n" + listOfCars.size() + " unique numbers " + listOfCars);
 
-        listOfCars.add(new Car(27, 54));
+        listOfCars.add(new Car(27));
         System.out.println("\n" + listOfCars.size() + " new unique numbers " + listOfCars);
 
-        listOfCars.add(listOfCars.size() / 2, new Car(28, 56));
+        listOfCars.add(listOfCars.size() / 2, new Car(28));
         System.out.println("\n" + listOfCars.size() + " first new unique numbers " + listOfCars);
 
-        listOfCars.add(0, new Car(29, 58));
+        listOfCars.add(0, new Car(29));
         System.out.println("\n" + listOfCars.size() + " second new unique numbers " + listOfCars);
 
         listOfCars.remove(listOfCars.size() - 1);
@@ -135,42 +134,42 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\n" + listOfCars.size() + " second removed unique numbers " + listOfCars);
 
         Stack<Car> stackOfCars = new Stack<>();
-        stackOfCars.push(new Car(30, 60));
-        stackOfCars.push(new Car(31, 62));
-        stackOfCars.push(new Car(32, 64));
+        stackOfCars.push(new Car(30));
+        stackOfCars.push(new Car(31));
+        stackOfCars.push(new Car(32));
         System.out.println("\n" + stackOfCars.size() + " unique stack " + stackOfCars);
 
-        stackOfCars.push(new Car(33, 66));
+        stackOfCars.push(new Car(33));
         System.out.println("\n" + stackOfCars.size() + " first unique stack " + stackOfCars);
 
         stackOfCars.pop();
         System.out.println("\n" + stackOfCars.size() + " first removed unique stack " + stackOfCars);
 
         Queue<Car> queueOfCars = new LinkedList<>();
-        queueOfCars.add(new Car(34, 68));
-        queueOfCars.add(new Car(35, 70));
-        queueOfCars.add(new Car(36, 72));
+        queueOfCars.add(new Car(34));
+        queueOfCars.add(new Car(35));
+        queueOfCars.add(new Car(36));
         System.out.println("\n" + queueOfCars.size() + " unique queues " + queueOfCars);
 
-        queueOfCars.add(new Car(37, 74));
+        queueOfCars.add(new Car(37));
         System.out.println("\n" + queueOfCars.size() + " new unique queues " + queueOfCars);
 
         queueOfCars.remove();
         System.out.println("\n" + queueOfCars.size() + " removed queues " + queueOfCars);
 
         Deque<Car> dequeOfCars = new LinkedList<>();
-        dequeOfCars.add(new Car(38, 76));
-        dequeOfCars.add(new Car(39, 78));
-        dequeOfCars.add(new Car(40, 80));
+        dequeOfCars.add(new Car(38));
+        dequeOfCars.add(new Car(39));
+        dequeOfCars.add(new Car(40));
         System.out.println("\n" + dequeOfCars.size() + " unique deques " + dequeOfCars);
 
-        dequeOfCars.add(new Car(41, 82));
+        dequeOfCars.add(new Car(41));
         System.out.println("\n" + dequeOfCars.size() + " new unique deques " + dequeOfCars);
 
-        dequeOfCars.addLast(new Car(42, 84));
+        dequeOfCars.addLast(new Car(42));
         System.out.println("\n" + dequeOfCars.size() + " first unique deques " + dequeOfCars);
 
-        dequeOfCars.addFirst(new Car(43, 86));
+        dequeOfCars.addFirst(new Car(43));
         System.out.println("\n" + dequeOfCars.size() + " second unique deques " + dequeOfCars);
 
         dequeOfCars.removeFirst();
@@ -179,43 +178,37 @@ public class MainActivity extends AppCompatActivity {
         dequeOfCars.removeLast();
         System.out.println("\n" + dequeOfCars.size() + " removed unique deques " + dequeOfCars);
 
-        ArrayList<Car> driveThru = new ArrayList<>();
-        driveThru.add(new Car(1,2));
-        driveThru.add(new Car(2,4));
-        driveThru.add(new Car(3,6));
-        driveThru.add(new Car(4,8));
-        driveThru.add(new Car(5,10));
-        driveThru.add(new Car(6,12));
-        driveThru.add(new Car(7,14));
-        driveThru.add(new Car(8,16));
-        driveThru.add(new Car(9,18));
-        driveThru.add(new Car(10,20));
+        Queue<Car> driveThru = new LinkedList<>();
+        driveThru.add(new Car(1));
+        driveThru.add(new Car(2));
+        driveThru.add(new Car(3));
+        driveThru.add(new Car(4));
+        driveThru.add(new Car(5));
+        driveThru.add(new Car(6));
+        driveThru.add(new Car(7));
+        driveThru.add(new Car(8));
+        driveThru.add(new Car(9));
+        driveThru.add(new Car(10));
         System.out.println("\n" + driveThru);
         System.out.println("\nThere are " + driveThru.size() + " cars in the Mcdonald drive thru");
 
         Random rand = new Random();
-        for (int i = 0 ; i < 3 ; i++) {
-            int ran_num = rand.nextInt(driveThru.size()) ;
-            Car num2 = driveThru.remove(ran_num) ;
-            System.out.println("You've removed " + num2+"." + driveThru) ;
+        int ran_num = rand.nextInt(driveThru.size()) ;
+        for (int i = 0 ; i < 1 ; i = i + 3) {
+            boolean num2 = driveThru.remove(ran_num);
         }
+        System.out.println("There are " + ran_num + " cars in the Mcdonald drive thru now");
 
-        System.out.println("\nThere are " + driveThru.size() + " cars in the Mcdonald drive thru now");
-
-        for (int i = 0 ; i < 3 ; i++) {
-            int ran_num = rand.nextInt(driveThru.size()) ;
-            Car num2 = driveThru.remove(ran_num) ;
-            System.out.println("You've removed " + num2+"." + driveThru) ;
+        int ran_num1 = rand.nextInt(driveThru.size()) ;
+        for (int i = 0 ; i < 1 ; i = i + 3) {
+            boolean num2 = driveThru.remove(ran_num1);
         }
+        System.out.println("There are " + ran_num1 + " cars in the Mcdonald drive thru now");
 
-        System.out.println("\nThere are " + driveThru.size() + " cars in the Mcdonald drive thru now");
-
-        for (int i = 0 ; i < 3 ; i++) {
-            int ran_num = rand.nextInt(driveThru.size()) ;
-            Car num2 = driveThru.remove(ran_num) ;
-            System.out.println("You've removed " + num2+"." + driveThru) ;
+        int ran_num2 = rand.nextInt(driveThru.size()) ;
+        for (int i = 0 ; i < 1 ; i = i + 3) {
+            boolean num2 = driveThru.remove(ran_num2);
         }
-
-        System.out.println("\nThere are " + driveThru.size() + " cars in the Mcdonald drive thru now");
+        System.out.println("There are " + ran_num2 + " cars in the Mcdonald drive thru now");
     }
 }
