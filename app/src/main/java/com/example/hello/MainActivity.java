@@ -108,42 +108,44 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\nWelcome to the Drive Thru");
 
         // 0919 DriveThruLane
+        System.out.println("\nWelcome to the Drive Thru");
+
         ArrayList<Car> listOfCars = new ArrayList<>();
         Car car = new Car(24);
         listOfCars.add(car);
         listOfCars.add(new Car(25));
         listOfCars.add(new Car(26));
-        System.out.println("\n" + listOfCars.size() + " unique numbers " + listOfCars);
+        System.out.println("\nList of cars are " + listOfCars.size() + " unique numbers " + listOfCars);
 
         listOfCars.add(new Car(27));
-        System.out.println("\n" + listOfCars.size() + " new unique numbers " + listOfCars);
+        System.out.println("\nList of cars are " + listOfCars.size() + " new unique numbers " + listOfCars);
 
         listOfCars.add(listOfCars.size() / 2, new Car(28));
-        System.out.println("\n" + listOfCars.size() + " first new unique numbers " + listOfCars);
+        System.out.println("\nList of cars are " + listOfCars.size() + " first new unique numbers " + listOfCars);
 
         listOfCars.add(0, new Car(29));
-        System.out.println("\n" + listOfCars.size() + " second new unique numbers " + listOfCars);
+        System.out.println("\nList of cars are " + listOfCars.size() + " second new unique numbers " + listOfCars);
 
         listOfCars.remove(listOfCars.size() - 1);
-        System.out.println("\n" + listOfCars.size() + " new removed unique numbers " + listOfCars);
+        System.out.println("\nList of cars are " + listOfCars.size() + " new removed unique numbers " + listOfCars);
 
         listOfCars.remove(listOfCars.size() / 2);
-        System.out.println("\n" + listOfCars.size() + " first removed unique numbers " + listOfCars);
+        System.out.println("\nList of cars are " + listOfCars.size() + " first removed unique numbers " + listOfCars);
 
         listOfCars.remove(0);
-        System.out.println("\n" + listOfCars.size() + " second removed unique numbers " + listOfCars);
+        System.out.println("\nList of cars are " + listOfCars.size() + " second removed unique numbers " + listOfCars);
 
         Stack<Car> stackOfCars = new Stack<>();
         stackOfCars.push(new Car(30));
         stackOfCars.push(new Car(31));
         stackOfCars.push(new Car(32));
-        System.out.println("\n" + stackOfCars.size() + " unique stack " + stackOfCars);
+        System.out.println("\nStack of cars are " + stackOfCars.size() + " unique stack " + stackOfCars);
 
         stackOfCars.push(new Car(33));
-        System.out.println("\n" + stackOfCars.size() + " first unique stack " + stackOfCars);
+        System.out.println("\nStack of cars are " + stackOfCars.size() + " first unique stack " + stackOfCars);
 
         stackOfCars.pop();
-        System.out.println("\n" + stackOfCars.size() + " first removed unique stack " + stackOfCars);
+        System.out.println("\nStack of cars are " + stackOfCars.size() + " first removed unique stack " + stackOfCars);
 
         Queue<Car> queueOfCars = new LinkedList<>();
         queueOfCars.add(new Car(34));
@@ -152,10 +154,10 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\n" + queueOfCars.size() + " unique queues " + queueOfCars);
 
         queueOfCars.add(new Car(37));
-        System.out.println("\n" + queueOfCars.size() + " new unique queues " + queueOfCars);
+        System.out.println("\nQueue of cars are " + queueOfCars.size() + " new unique queues " + queueOfCars);
 
         queueOfCars.remove();
-        System.out.println("\n" + queueOfCars.size() + " removed queues " + queueOfCars);
+        System.out.println("\nQueue of cars are " + queueOfCars.size() + " removed queues " + queueOfCars);
 
         Deque<Car> dequeOfCars = new LinkedList<>();
         dequeOfCars.add(new Car(38));
@@ -164,19 +166,19 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\n" + dequeOfCars.size() + " unique deques " + dequeOfCars);
 
         dequeOfCars.add(new Car(41));
-        System.out.println("\n" + dequeOfCars.size() + " new unique deques " + dequeOfCars);
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " new unique deques " + dequeOfCars);
 
         dequeOfCars.addLast(new Car(42));
-        System.out.println("\n" + dequeOfCars.size() + " first unique deques " + dequeOfCars);
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " first unique deques " + dequeOfCars);
 
         dequeOfCars.addFirst(new Car(43));
-        System.out.println("\n" + dequeOfCars.size() + " second unique deques " + dequeOfCars);
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " second unique deques " + dequeOfCars);
 
         dequeOfCars.removeFirst();
-        System.out.println("\n" + dequeOfCars.size() + " removed unique deques " + dequeOfCars);
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " removed unique deques " + dequeOfCars);
 
         dequeOfCars.removeLast();
-        System.out.println("\n" + dequeOfCars.size() + " removed unique deques " + dequeOfCars);
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " removed unique deques " + dequeOfCars);
 
         Queue<Car> driveThru = new LinkedList<>();
         driveThru.add(new Car(1));
@@ -193,22 +195,13 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\nThere are " + driveThru.size() + " cars in the Mcdonald drive thru");
 
         Random rand = new Random();
-        int ran_num = rand.nextInt(driveThru.size()) ;
-        for (int i = 0 ; i < 1 ; i = i + 3) {
-            boolean num2 = driveThru.remove(ran_num);
-        }
-        System.out.println("There are " + ran_num + " cars in the Mcdonald drive thru now");
+        int new_num = driveThru.size() - 3 ;
+        System.out.println("\nThere are " + new_num + " cars in the Mcdonald drive thru now");
 
-        int ran_num1 = rand.nextInt(driveThru.size()) ;
-        for (int i = 0 ; i < 1 ; i = i + 3) {
-            boolean num2 = driveThru.remove(ran_num1);
-        }
-        System.out.println("There are " + ran_num1 + " cars in the Mcdonald drive thru now");
+        int new_num1 = new_num - 3 ;
+        System.out.println("\nThere are " + new_num1 + " cars in the Mcdonald drive thru now");
 
-        int ran_num2 = rand.nextInt(driveThru.size()) ;
-        for (int i = 0 ; i < 1 ; i = i + 3) {
-            boolean num2 = driveThru.remove(ran_num2);
-        }
-        System.out.println("There are " + ran_num2 + " cars in the Mcdonald drive thru now");
+        int new_num2 = new_num1 - 3 ;
+        System.out.println("\nThere are " + new_num2 + " cars in the Mcdonald drive thru now");
     }
 }
