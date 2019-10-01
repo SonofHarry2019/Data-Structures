@@ -7,12 +7,9 @@ import android.os.Bundle;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Random;
-import java.util.Scanner;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
@@ -194,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\n" + driveThru);
         System.out.println("\nThere are " + driveThru.size() + " cars in the Mcdonald drive thru");
 
-        Random rand = new Random();
         int new_num = driveThru.size() - 3 ;
         System.out.println("\nThere are " + new_num + " cars in the Mcdonald drive thru now");
 
