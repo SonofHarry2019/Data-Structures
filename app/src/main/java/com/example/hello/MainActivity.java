@@ -191,13 +191,22 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\n" + driveThru);
         System.out.println("\nThere are " + driveThru.size() + " cars in the Mcdonald drive thru");
 
-        int new_num = driveThru.size() - 3 ;
-        System.out.println("\nThere are " + new_num + " cars in the Mcdonald drive thru now");
+        driveThru.remove();
+        System.out.println("\nThe cashier help 1 person, there are " + driveThru.size() + " left");
 
-        int new_num1 = new_num - 3 ;
-        System.out.println("\nThere are " + new_num1 + " cars in the Mcdonald drive thru now");
+        driveThru.remove();
+        System.out.println("\nAnother cashier help 1 person, there are " + driveThru.size() + " left");
 
-        int new_num2 = new_num1 - 3 ;
-        System.out.println("\nThere are " + new_num2 + " cars in the Mcdonald drive thru now");
+        driveThru.remove();
+        System.out.println("\nAnother cashier help 1 person, there are " + driveThru.size() + " left");
+
+        driveThru.remove();
+        System.out.println("\nAnother cashier help 1 person, there are " + driveThru.size() + " left");
+
+        driveThru.remove();
+        System.out.println("\nAnother cashier help 1 person, there are " + driveThru.size() + " left");
+
+        driveThru.remove();
+        System.out.println("\nAnother cashier help 1 person, there are " + driveThru.size() + " left");
     }
 }
