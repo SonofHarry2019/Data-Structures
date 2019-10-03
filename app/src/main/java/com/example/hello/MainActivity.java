@@ -4,13 +4,16 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Set;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,12 +24,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // lab 829
         System.out.println("\n\nHello, DS Lab #4a - Modular Code");
 
         Random rand = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            int num = rand.nextInt(100-1);
+            int num = rand.nextInt(100 - 1);
             numbers.add(num);
         }
         System.out.println("\nThe " + numbers.size() + " integers are " + numbers);
@@ -61,9 +65,6 @@ public class MainActivity extends AppCompatActivity {
         // how many values greater than 0 are in the ArrayList
         System.out.println("\nGreater then zero: " + greaterThanZero(numbers));
 
-        // refactor 9 to make it more flexible (no magic numbers)
-        System.out.println("\nMagical greater then zero: " + greaterThanZero(numbers));
-
         // bonus, try to remove all elements less than 70 (use Iterator)
         removeElements(numbers);
         System.out.println("\nRemoved elements list: " + numbers);
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         Random rand = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
         for (int j = 1; j <= 10; j++) {
-            int num = rand.nextInt(100-1);
+            int num = rand.nextInt(100 - 1);
             numbers.add(num);
         }
         return numbers;
@@ -92,13 +93,13 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Integer> numbers = new ArrayList<>();
 
         for (int i = 1; i <= 10; i++) {
-            int num = rand.nextInt(100-1);
+            int num = rand.nextInt(100 - 1);
             numbers.add(num);
         }
         return numbers;
     }
 
-    private static int Average(ArrayList<Integer> numbers){
+    private static int Average(ArrayList<Integer> numbers) {
         int sum = 0;
         for (int i = 0; i < numbers.size(); i++) {
             sum = sum + numbers.get(i);
@@ -109,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static int Max(ArrayList<Integer> numbers) {
         int max = Integer.MIN_VALUE;
-        for(int i=0; i<numbers.size(); i++){
-            if(numbers.get(i) >= max){
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) >= max) {
                 max = numbers.get(i);
             }
         }
@@ -141,10 +142,66 @@ public class MainActivity extends AppCompatActivity {
 
     private static void removeElements(ArrayList<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if(numbers.get(i) <= 70) {
+            if (numbers.get(i) <= 70) {
                 numbers.remove(i);
                 i--;
             }
         }
+    }
+
+    // Lab 1001
+    public static void main(String[] args) {
+        System.out.println("\nWelcome to Name Your Dog");
+        List<String> adjectives = Arrays.asList("black", "spotty", "chunky");
+        List<String> nouns = Arrays.asList("mammoth", "chew", "monkey", "xbox");
+        Set<String> myNames = new HashSet<String>();
+        Set<String> yourNames = new HashSet<String>();
+        Set<String> reNames = new HashSet<>();
+
+        while (reNames.size() == 0) {
+            Random rand = new Random();
+            for (int i = 1; i <= 100; i++) {
+                int adj = rand.nextInt(adjectives.size());
+                int n = rand.nextInt(nouns.size());
+                String aName = adjectives.get(adj);
+                String nName = nouns.get(n);
+                String dogName = aName + " " + nName;
+                myNames.add(dogName);
+            }
+            System.out.println("\nMy names have " + myNames.size() + " unique names");
+
+            for (int i = 1; i <= 100; i++) {
+                int adj = rand.nextInt(adjectives.size());
+                int n = rand.nextInt(nouns.size());
+                String aName = adjectives.get(adj);
+                String nName = nouns.get(n);
+                String dogName = aName + " " + nName;
+                yourNames.add(dogName);
+            }
+            System.out.println("\nYour names have " + yourNames.size() + " unique names");
+
+            for (String name : myNames) {
+                if (yourNames.contains(name)) {
+                    reNames.add(name);
+                }
+            }
+            System.out.println("\nThere are " + reNames.size() + " common names");
+        }
+
+        if (reNames.size() == 1) {
+            System.out.println("\nCongrats, name of the dog is " + reNames);
+        }
+
+        Queue<String> nameQ = new LinkedList<>(reNames);
+        while (nameQ.size() > 1) {
+            Random ran = new Random();
+            int turns = ran.nextInt(100) - 1;
+            for (int i = 0; i < turns; i++) {
+                String n = nameQ.remove();
+                nameQ.add(n);
+            }
+            nameQ.remove();
+        }
+        System.out.println("\nCongrats, the name for your dog is " + nameQ);
     }
 }
