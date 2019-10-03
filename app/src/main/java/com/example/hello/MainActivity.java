@@ -141,8 +141,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static void removeElements(ArrayList<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if(numbers.size() <= 70) {
-                numbers.remove(numbers);
+            if(numbers.get(i) <= 70) {
+                numbers.remove(i);
+                i--;
             }
         }
     }
