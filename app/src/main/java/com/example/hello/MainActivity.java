@@ -134,21 +134,11 @@ public class MainActivity extends AppCompatActivity {
         // fix [numbers3rd] so the new list is every 3rd element
 
         // store 333 at every index that is divisible by 3
-        int store = 333;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (i % 3 == 0) {
-                numbers.set(i, store);
-            }
-        }
+        storeNumber(numbers);
         System.out.println("\nThe stored number is " + numbers);
 
         // replace every element that is divisible by 5 with 555 sort the list of number
-        int replace = 555;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) % 5 == 0) {
-                numbers.set(i, replace);
-            }
-        }
+        replaceNumber(numbers);
         System.out.println("\nThe replaced list is " + numbers);
 
         System.out.println("\nThe original list of numbers is " + numbers);
@@ -173,5 +163,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    public static void replaceNumber(ArrayList<Integer> numbers) {
+        int store = 333;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (i % 3 == 0) {
+                numbers.set(i, store);
+            }
+        }
+    }
+
+    public static void storeNumber(ArrayList<Integer> numbers) {
+        int replace = 555;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) % 5 == 0) {
+                numbers.set(i, replace);
+            }
+        }
     }
 }
