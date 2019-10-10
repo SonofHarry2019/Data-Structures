@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\nThe list of scores: " + scores);
 
         // overload to "... = generateListOfScores( 10, 0, 100 );"
-        scores = generateListOfScores(0);
-        scores = generateListOfScores(100);
+        scores = generateListOfScores(10, 0, 100);
+        System.out.println("\nOverload: " + scores);
 
         // what is the average of an ArrayList of integers
         System.out.println("\nAverage: " + Average(numbers));
