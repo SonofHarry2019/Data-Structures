@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         Random rand = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            int num = rand.nextInt(100-1);
+            int num = rand.nextInt(100 - 1);
             numbers.add(num);
         }
         System.out.println("\nThe " + numbers.size() + " integers are " + numbers);
 
         // generate an ArrayList of 10 random scores in (0...100)
-        ArrayList<Integer> scores = generateListOfScores();
+        ArrayList<Integer> scores = generateListOfScores( 3, 0, 100);
 
         // replace previous statements with "output ( scores )"
         output(scores);
@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<Integer> generateListOfScores(int i) {
         Random rand = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
-        for (int j = 1; j <= 10; j++) {
-            int num = rand.nextInt(100-1);
+        for (i = 1; i <= 10; i++) {
+            int num = rand.nextInt(100 - 1);
             numbers.add(num);
         }
         return numbers;
@@ -87,18 +87,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static ArrayList<Integer> generateListOfScores() {
+    private static ArrayList<Integer> generateListOfScores(int i, int j) {
         Random rand = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
-
-        for (int i = 1; i <= 10; i++) {
-            int num = rand.nextInt(100-1);
+        for (j = 1; j <= 10; j++) {
+            int num = rand.nextInt(100 - 1);
             numbers.add(num);
         }
         return numbers;
     }
 
-    private static int Average(ArrayList<Integer> numbers){
+    private static ArrayList<Integer> generateListOfScores(int i, int j, int k) {
+        Random rand = new Random();
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (k = 1; k <= 10; k++) {
+            int num = rand.nextInt(i - j + 1) +j;
+            numbers.add(num);
+        }
+        return numbers;
+    }
+
+    private static int Average(ArrayList<Integer> numbers) {
         int sum = 0;
         for (int i = 0; i < numbers.size(); i++) {
             sum = sum + numbers.get(i);
@@ -109,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static int Max(ArrayList<Integer> numbers) {
         int max = Integer.MIN_VALUE;
-        for(int i=0; i<numbers.size(); i++){
-            if(numbers.get(i) >= max){
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) >= max) {
                 max = numbers.get(i);
             }
         }
@@ -141,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static void removeElements(ArrayList<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if(numbers.get(i) <= 70) {
+            if (numbers.get(i) <= 70) {
                 numbers.remove(i);
                 i--;
             }
