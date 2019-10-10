@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\nThe " + numbers.size() + " integers are " + numbers);
 
         // generate an ArrayList of 10 random scores in (0...100)
-        ArrayList<Integer> scores = generateListOfScores( 3, 0, 100);
+        ArrayList<Integer> scores = generateListOfScores(3, 0, 100);
 
         // replace previous statements with "output ( scores )"
         output(scores);
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         Random rand = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
         for (k = 1; k <= 10; k++) {
-            int num = rand.nextInt(i - j + 1) +j;
+            int num = rand.nextInt(k - j + 1) + j;
             numbers.add(num);
         }
         return numbers;
