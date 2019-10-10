@@ -25,160 +25,125 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("\n\nHello, DS Lab #3 - ArrayList!\n");
+        System.out.println("\n\nHello, DS Lab #4a - Modular Code");
 
-        // store 10 random values [0..100] in an ArrayList
         Random rand = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
-            int num = rand.nextInt(100 + 1);    // random integer in [0..100}
+            int num = rand.nextInt(100-1);
             numbers.add(num);
         }
-        System.out.println("The " + numbers.size() + " integers are " + numbers);
+        System.out.println("\nThe " + numbers.size() + " integers are " + numbers);
 
-        // output the ArrayList using a for-loop
-        System.out.println("\nEach integer on a separate line");
+        // generate an ArrayList of 10 random scores in (0...100)
+        ArrayList<Integer> scores = generateListOfScores();
+
+        // replace previous statements with "output ( scores )"
+        output(scores);
+
+        // overload to "... = generateListOfScores( 10 )"
+        scores = generateListOfScores(10);
+        System.out.println("\nThe list of scores: " + scores);
+
+        // overload to "... = generateListOfScores( 10, 0, 100 );"
+        scores = generateListOfScores(0);
+        scores = generateListOfScores(100);
+
+        // what is the average of an ArrayList of integers
+        System.out.println("\nAverage: " + Average(numbers));
+
+        // what is the maximum element in an ArrayList of integers
+        System.out.println("\nThe max number is: " + Max(numbers));
+        //System.out.println("\nThe max number is " + Max(numbers.size()));
+
+        // what is the position of the max element in the ArrayList
+        System.out.println("\nThe position of the max element is " + maxPosition(numbers));
+
+        // Skip TODO 7: refactor TODO 6 to make it more flexible
+        // Skip TODO 8: fix TODO 6 so it can return more than one value
+
+        // how many values greater than 0 are in the ArrayList
+        System.out.println("\nGreater then zero: " + greaterThanZero(numbers));
+
+        // bonus, try to remove all elements less than 70 (use Iterator)
+        removeElements(numbers);
+        System.out.println("\nRemoved elements list: " + numbers);
+    }
+
+    private static ArrayList<Integer> generateListOfScores(int i) {
+        Random rand = new Random();
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int j = 1; j <= 10; j++) {
+            int num = rand.nextInt(100-1);
+            numbers.add(num);
+        }
+        return numbers;
+    }
+
+    private static void output(ArrayList<Integer> scores) {
+        System.out.print("\nThe " + scores.size() + " scores are " + scores);
+        for (int index = 0; index < scores.size(); index++) {
+            //System.out.print(scores.get(index) + " ");
+        }
+    }
+
+    private static ArrayList<Integer> generateListOfScores() {
+        Random rand = new Random();
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        for (int i = 1; i <= 10; i++) {
+            int num = rand.nextInt(100-1);
+            numbers.add(num);
+        }
+        return numbers;
+    }
+
+    private static int Average(ArrayList<Integer> numbers){
+        int sum = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            System.out.println(numbers.get(i));
+            sum = sum + numbers.get(i);
         }
-        System.out.println("\n");
+        int average = sum / numbers.size();
+        return average;
+    }
 
-        // use a for-loop, output each line in format "index \t element"
-        for (int i = 0; i < numbers.size(); i++) {
-            System.out.println(numbers.get(i) + " \t " + numbers);
-        }
-        System.out.println();
-
-        // use a for-loop to output the integers in reverse order
-        int size = numbers.size();
-        for (int i = 0; i < size / 2; i++) {
-            int reverse = numbers.get(i);
-            numbers.set(i, numbers.get(size - i - 1));
-            numbers.set(size - i - 1, reverse);
-        }
-        System.out.println("Reversed ArrayList: " + numbers);
-
-        // output the ArrayList using an enhanced for (foreach) loop
-        System.out.println("\nAgain, each integer in a separate line:");
-        for (int num : numbers) {
-            System.out.println(num);
-        }
-
-        System.out.println("\nThe original integers are " + numbers);
-
-        System.out.println("\nThe even elements in the list:\t");
-        for (int num : numbers) {
-            if (num % 2 == 0) {
-                System.out.println(num + " ");
-            }
-        }
-        System.out.println();
-
-        // use an enhanced-for, output integers separated by commas
-        System.out.println("The integers with a comma:\t");
-        for (int num : numbers) {
-            System.out.print(num + ", ");
-        }
-        System.out.println();
-
-        // determine (boolean) if the list has any even elements
-        System.out.println("\nList has even elements?: " + hasEven(numbers));
-
-        // how many of the elements in the list are even
-        int count = 0;
-        for (int num : numbers) {
-            if (num % 2 == 0) {
-                count = count + 1;
-            }
-        }
-        System.out.println("\nThere are " + count + " even integers");
-
-        // determine (boolean) if all the elements in the list are even
-        System.out.println("\nThe list has even elements: " + evenElements(numbers));
-
-        // what is the maximum element in the list
+    private static int Max(ArrayList<Integer> numbers) {
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) >= max) {
+        for(int i=0; i<numbers.size(); i++){
+            if(numbers.get(i) >= max){
                 max = numbers.get(i);
             }
         }
-        System.out.println("\nThe max number is " + max);
+        return max;
+    }
 
-        // what is the index to the minimum element in the list
-        int min = Integer.MAX_VALUE;
+    private static int maxPosition(ArrayList<Integer> numbers) {
+        int max = 0;
+        int index = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) <= min) {
-                min = numbers.get(i);
+            if (max < numbers.get(i)) {
+                max = numbers.get(i);
+                index = i;
             }
         }
-        System.out.println("\nThe min element is " + min);
-
-        // what percentage of the elements in the list are odd
-        int sumOdd = 0;
-        for (int num : numbers) {
-            if (num % 2 != 0) {
-                sumOdd++;
-            }
-        }
-        float percentOdd = (float) sumOdd / numbers.size() * 100;
-        System.out.println("\t" + percentOdd + "% of the elements are odd.");
-
-        // build a new list from only every 3rd element of the integers
-        ArrayList<Integer> numbers3rd = new ArrayList<>();
-        for (int i = 2; i < numbers.size(); i = i + 3) {
-            numbers3rd.add(numbers.get(i));
-        }
-        System.out.println("\nThe original list is \t" + numbers);
-        System.out.println("\nEvery 3rd element is \t" + numbers3rd);
-        // fix [numbers3rd] so the new list is every 3rd element
-
-        // store 333 at every index that is divisible by 3
-        storeNumber(numbers);
-        System.out.println("\nThe stored number is " + numbers);
-
-        // replace every element that is divisible by 5 with 555 sort the list of number
-        replaceNumber(numbers);
-        System.out.println("\nThe replaced list is " + numbers);
-
-        System.out.println("\nThe original list of numbers is " + numbers);
-        numbers.sort(Integer::compareTo); // sort using a method reference
-        numbers.sort((n1, n2) -> n1.compareTo(n2)); // sort using a comparable
-        System.out.println("\nThe sorted list of numbers is " + numbers);
+        return index;
     }
 
-    public static boolean hasEven(ArrayList<Integer> numbers) {
-        for (int num : numbers) {
-            if (num % 2 != 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static boolean evenElements(ArrayList<Integer> numbers) {
-        for (int num : numbers) {
-            if (num % 2 == 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static void replaceNumber(ArrayList<Integer> numbers) {
-        int store = 333;
+    private static int greaterThanZero(ArrayList<Integer> numbers) {
+        int add = 0;
         for (int i = 0; i < numbers.size(); i++) {
-            if (i % 3 == 0) {
-                numbers.set(i, store);
+            if (numbers.size() > 0) {
+                add = numbers.size();
             }
         }
+        return add;
     }
 
-    public static void storeNumber(ArrayList<Integer> numbers) {
-        int replace = 555;
+    private static void removeElements(ArrayList<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) % 5 == 0) {
-                numbers.set(i, replace);
+            if(numbers.get(i) <= 70) {
+                numbers.remove(i);
+                i--;
             }
         }
     }
