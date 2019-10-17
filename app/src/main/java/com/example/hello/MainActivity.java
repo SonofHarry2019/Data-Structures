@@ -25,135 +25,94 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("\n\nHello, DS Lab #4a - Modular Code");
+        // create a Java project named "ItemDriver"
+        // output a welcome message
+        System.out.println("\nWelcome to the ItemDiver");
 
-        Random rand = new Random();
-        ArrayList<Integer> numbers = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            int num = rand.nextInt(100 - 1);
-            numbers.add(num);
-        }
-        System.out.println("\nThe " + numbers.size() + " integers are " + numbers);
+        // read a [name] (String) and a [price] (double) from stdin
+        String name = "Almond";
+        double price = 1;
 
-        // generate an ArrayList of 10 random scores in (0...100)
-        ArrayList<Integer> scores = generateListOfScores(3, 0, 100);
+        // output the name and price using the following Java statement
+        System.out.println("%s \t $%.2f %n" + name + "  " + price);
 
-        // replace previous statements with "output ( scores )"
-        output(scores);
+        // create an Item class that has 3 fields: name, price, and quantity
+        // In Item.java
+        // create an Item default constructor that works like Item item1 = new Item();
+        Item item1 = new Item("silk", 1.75, 1);
 
-        // overload to "... = generateListOfScores( 10 )"
-        scores = generateListOfScores(10);
-        System.out.println("\nThe list of scores: " + scores);
+        // use the IDE to generate a parameterized constructor that works like
+        Item milk = new Item("soy milk", 2.75, 2);
+        Item avocado = new Item("avocado", 6.75, 4);
+        Item bread = new Item("wheat", 4.75, 6);
 
-        // overload to "... = generateListOfScores( 10, 0, 100 );"
-        scores = generateListOfScores(10, 0, 100);
-        System.out.println("\nOverload: " + scores);
+        // use the IDE to generate Item.toString()
+        System.out.println( "\nThe items are:\n\t" + item1
+                + "\n\t" + milk + "\n\t" + avocado );
 
-        // what is the average of an ArrayList of integers
-        System.out.println("\nAverage: " + Average(numbers));
+        // modify Item.toString() so it returns a String in the format: "name \t
+        //  quantity \t $xx.xx"
+        System.out.println("\nAgain, the items are:\n\t" + item1
+                + "\n\t" + milk + "\n\t" + avocado);
 
-        // what is the maximum element in an ArrayList of integers
-        System.out.println("\nThe max number is: " + Max(numbers));
-        //System.out.println("\nThe max number is " + Max(numbers.size()));
+        // use the IDE to generate all 6 getters and setters methods
+        String breadName = bread.getNames();
+        System.out.println("\nThe name of the first item is " + breadName);
 
-        // what is the position of the max element in the ArrayList
-        System.out.println("\nThe position of the max element is " + maxPosition(numbers));
+        // output the other two names of the three Item objects
+        System.out.println("\nThe second item is " + milk);
+        System.out.println("\nThe third item is " + avocado);
 
-        // Skip TODO 7: refactor TODO 6 to make it more flexible
-        // Skip TODO 8: fix TODO 6 so it can return more than one value
+        avocado.setQuantity(5);
+        // change the name of the milk to "silk milk"
+        milk.setNames("silk milk");
+        System.out.println();
 
-        // how many values greater than 0 are in the ArrayList
-        System.out.println("\nGreater then zero: " + greaterThanZero(numbers));
+        // change the price of the bread to $3.58
+        bread.setPrice(3.58);
+        System.out.println(bread);
 
-        // bonus, try to remove all elements less than 70 (use Iterator)
-        removeElements(numbers);
-        System.out.println("\nRemoved elements list: " + numbers);
+        // add 50 cents to the price of the avocados
+        avocado.setPrice(6.75 + .50);
+        System.out.println("\n" + avocado);
+
+        // create a method (not a function) that
+        // calculates the unit cost of an Item.
+        // For example, if the price is $2.10 and the quantity is 2,
+        // then the unit price is $1.05
+        double uCost = avocado.unitCostOfItem();
+        System.out.println("\nThe unit cost is " + uCost);
+
+        // create a method (not a function) that
+        // calculates the total cost of an Item.
+        // For example, if the price is $2.10 and the quantity is 2,
+        // then the cost of the Item is $4.20
+        double tCost = avocado.totalCostOfItem();
+        System.out.println("\nThe cost of the item is " + tCost);
+
+        // TODO 17: create a function (not a method) that
+        //  calculates the total cost of all 3 Items.
+        double costThree = costOfThree(avocado, milk, bread);
+        System.out.println("\nCost 3 is " + costThree);
+
+
+        // create a method (not a function) that
+        // calculates a 9.45\% sales tax on an Item.
+        double sTax = avocado.salesTaxOfItem();
+        System.out.println("\nThe total sales tax is " + sTax);
+
+        // TODO 19: create a function (not a method) that
+        //  calculates the total cost of all 3 Items
+        //  including sales tax.
+        double salesThree = threeItemSalesTax(avocado, milk, bread);
+        System.out.println("\nSales tax is " + salesThree);
     }
 
-    private static ArrayList<Integer> generateListOfScores(int i) {
-        Random rand = new Random();
-        ArrayList<Integer> numbers = new ArrayList<>();
-        for (i = 1; i <= 10; i++) {
-            int num = rand.nextInt(100 - 1);
-            numbers.add(num);
-        }
-        return numbers;
+    public static double costOfThree(Item avocado, Item milk, Item bread) {
+        return avocado.getPrice() + milk.getPrice() + bread.getPrice();
     }
 
-    private static void output(ArrayList<Integer> scores) {
-        System.out.print("\nThe " + scores.size() + " scores are " + scores);
-        for (int index = 0; index < scores.size(); index++) {
-            //System.out.print(scores.get(index) + " ");
-        }
-    }
-
-    private static ArrayList<Integer> generateListOfScores(int i, int j) {
-        Random rand = new Random();
-        ArrayList<Integer> numbers = new ArrayList<>();
-        for (j = 1; j <= 10; j++) {
-            int num = rand.nextInt(100 - 1);
-            numbers.add(num);
-        }
-        return numbers;
-    }
-
-    private static ArrayList<Integer> generateListOfScores(int i, int j, int k) {
-        Random rand = new Random();
-        ArrayList<Integer> numbers = new ArrayList<>();
-        for (k = 1; k <= 10; k++) {
-            int num = rand.nextInt(k - j + 1) + j;
-            numbers.add(num);
-        }
-        return numbers;
-    }
-
-    private static int Average(ArrayList<Integer> numbers) {
-        int sum = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            sum = sum + numbers.get(i);
-        }
-        int average = sum / numbers.size();
-        return average;
-    }
-
-    private static int Max(ArrayList<Integer> numbers) {
-        int max = Integer.MIN_VALUE;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) >= max) {
-                max = numbers.get(i);
-            }
-        }
-        return max;
-    }
-
-    private static int maxPosition(ArrayList<Integer> numbers) {
-        int max = 0;
-        int index = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (max < numbers.get(i)) {
-                max = numbers.get(i);
-                index = i;
-            }
-        }
-        return index;
-    }
-
-    private static int greaterThanZero(ArrayList<Integer> numbers) {
-        int add = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.size() > 0) {
-                add = numbers.size();
-            }
-        }
-        return add;
-    }
-
-    private static void removeElements(ArrayList<Integer> numbers) {
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) <= 70) {
-                numbers.remove(i);
-                i--;
-            }
-        }
+    public static double threeItemSalesTax(Item avocado, Item milk, Item bread) {
+        return avocado.getPrice() + milk.getPrice() + bread.getPrice() + 9.45;
     }
 }
