@@ -26,192 +26,202 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Lab 905
+        System.out.println("\nWelcome to Homework Driver");
 
-        // create a Java project named "ItemDriver"
-        // output a welcome message
-        System.out.println("\nWelcome to the ItemDiver");
+        Homework homework = new Homework("CPSC2735", "test", 10,
+                3, 2019, 1);
+        System.out.println("\n" + homework);
 
-        // read a [name] (String) and a [price] (double) from stdin
-        String name = "Almond";
-        double price = 1;
+        Homework homework1 = new Homework("CPSC1720", "test", 11,
+                4, 2019, 1);
+        System.out.println("\n" + homework1);
 
-        // output the name and price using the following Java statement
-        System.out.println("%s \t $%.2f %n" + name + "  " + price);
+        Homework homework2 = new Homework("CPSC1710", "test", 12,
+                5, 2019, 1);
+        System.out.println("\n" + homework2);
 
-        // create an Item class that has 3 fields: name, price, and quantity
-        // In Item.java
-        // create an Item default constructor that works like Item item1 = new Item();
-        Item item1 = new Item("silk", 1.75, 1);
+        LocalDate today = LocalDate.now();
+        System.out.println("\nToday is " + today);
+        int month = today.getMonthValue();
+        int day = today.getDayOfMonth();
+        int year = today.getYear();
 
-        // use the IDE to generate a parameterized constructor that works like
-        Item milk = new Item("soy milk", 2.75, 2);
-        Item avocado = new Item("avocado", 6.75, 4);
-        Item bread = new Item("wheat", 4.75, 6);
+        LocalDate aWeekFromNow = today.plusDays(7);
+        boolean earlier = aWeekFromNow.isBefore(today);
 
-        // use the IDE to generate Item.toString()
-        System.out.println("\nThe items are:\n\t" + item1
-                + "\n\t" + milk + "\n\t" + avocado);
 
-        // modify Item.toString() so it returns a String in the format: "name \t
-        //  quantity \t $xx.xx"
-        System.out.println("\nAgain, the items are:\n\t" + item1
-                + "\n\t" + milk + "\n\t" + avocado);
+        if (homework.getDueDay() > 28) {
+            System.out.println("\nThe date is " + today);
+        } else {
+            System.out.println("\nThe date is " + homework);
+        }
 
-        // use the IDE to generate all 6 getters and setters methods
-        String breadName = bread.getNames();
-        System.out.println("\nThe name of the first item is " + breadName);
+        if (homework1.getDueDay() > 28) {
+            System.out.println("\nThe date is " + today);
+        } else {
+            System.out.println("\nThe date is " + homework1);
+        }
 
-        // output the other two names of the three Item objects
-        System.out.println("\nThe second item is " + milk);
-        System.out.println("\nThe third item is " + avocado);
+        if (homework2.getDueDay() > 28) {
+            System.out.println("\nThe date is " + today);
+        } else {
+            System.out.println("\nThe date is " + homework2);
+        }
 
-        avocado.setQuantity(5);
-        // change the name of the milk to "silk milk"
-        milk.setNames("silk milk");
+        if (homework.getDueYear() >= 2018 && homework.getDueYear() <= 2020) {
+            System.out.println("\nThe year is " + today);
+        } else {
+            System.out.println("\nThe year is " + homework);
+        }
+
+        if (homework1.getDueYear() >= 2018 && homework1.getDueYear() <= 2020) {
+            System.out.println("\nThe year is " + today);
+        } else {
+            System.out.println("\nThe year is " + homework1);
+        }
+
+        if (homework2.getDueYear() >= 2018 && homework2.getDueYear() <= 2020) {
+            System.out.println("\nThe due date is " + today);
+        } else {
+            System.out.println("\nThe date is " + homework2);
+        }
+
+        Homework comp = new Homework("CPSC2735", "Test", 1,
+                6, 2020, 3);
+        Homework math = new Homework("MATH1070", "Homework", 2,
+                7, 2020, 1);
+        Homework english = new Homework("ENGL2010", "Quiz", 3,
+                8, 2020, 2);
+
+        if (comp.getDueDay() >= 28) {
+            System.out.println("\nThe date is " + today);
+        } else {
+            System.out.println("\nThe date is " + comp);
+        }
+
+        if (math.getDueDay() >= 28) {
+            System.out.println("\nThe date is " + today);
+        } else {
+            System.out.println("\nThe date is " + math);
+        }
+
+        if (english.getDueDay() >= 28) {
+            System.out.println("\nThe date is " + today);
+        } else {
+            System.out.println("\nThe date is " + english);
+        }
+
+        if (comp.getDueYear() >= 2018 && comp.getDueYear() <= 2020) {
+            System.out.println("\nThe year is " + today);
+        } else {
+            System.out.println("\nThe year is " + comp);
+        }
+
+        if (math.getDueYear() >= 2018 && math.getDueYear() <= 2020) {
+            System.out.println("\nThe year is " + today);
+        } else {
+            System.out.println("\nThe year is " + math);
+        }
+
+        if (english.getDueYear() >= 2018 && english.getDueYear() <= 2020) {
+            System.out.println("\nThe year is " + today);
+        } else {
+            System.out.println("\nThe year is " + english);
+        }
+
+        if (comp.getPriority() >= 1 && comp.getPriority() <= 3) {
+            System.out.println("\nThe priority is " + today);
+        } else {
+            System.out.println("\nThe priority is " + comp);
+        }
+
+        if (math.getPriority() >= 1 && math.getPriority() <= 3) {
+            System.out.println("\nThe priority is " + today);
+        } else {
+            System.out.println("\nThe priority is " + math);
+        }
+
+        if (english.getPriority() >= 1 && english.getPriority() <= 3) {
+            System.out.println("\nThe priority is " + today);
+        } else {
+            System.out.println("\nThe priority is " + english);
+        }
+
+        Homework sci = new Homework("Science", "Test", 4,
+                9, 2020, 3);
+        Homework read = new Homework("Reading", "Quiz", 7,
+                10, 2020, 2);
+        Homework chem = new Homework("Chemistry", "Test", 8,
+                11, 2020, 3);
+        Homework hist = new Homework("Histroy", "Quiz", 9,
+                12, 2020, 2);
+
+        ArrayList<Homework> classes = new ArrayList<>();
+        classes.add(comp);
+        classes.add(math);
+        classes.add(english);
+        classes.add(sci);
+        classes.add(read);
+        classes.add(chem);
+        classes.add(hist);
+        System.out.println("\nThere are " + classes.size() + " classes");
+
+        int getMonth = Month(comp, math, english, sci, read, chem, hist);
+        System.out.println("\nThere are " + getMonth + " months");
+
+        double getPriority = Priority(classes, comp, math, english, sci, read, chem, hist);
+        System.out.println("\nThe total priority is " + getPriority);
+
+        int getToday = Today(day, comp, math, english, sci, read, chem, hist);
+        System.out.println("\nThere are " + getToday + " homework's due today");
+
+        int past = pastDue(today, comp, math, english, sci, read, chem, hist);
         System.out.println();
-
-        // change the price of the bread to $3.58
-        bread.setPrice(3.58);
-        System.out.println(bread);
-
-        // add 50 cents to the price of the avocados
-        avocado.setPrice(6.75 + .50);
-        System.out.println("\n" + avocado);
-
-        // create a method (not a function) that
-        // calculates the unit cost of an Item.
-        // For example, if the price is $2.10 and the quantity is 2,
-        // then the unit price is $1.05
-        double uCost = avocado.unitCostOfItem();
-        System.out.println("\nThe unit cost is " + uCost);
-
-        // create a method (not a function) that
-        // calculates the total cost of an Item.
-        // For example, if the price is $2.10 and the quantity is 2,
-        // then the cost of the Item is $4.20
-        double tCost = avocado.totalCostOfItem();
-        System.out.println("\nThe cost of the item is " + tCost);
-
-        // create a function (not a method) that
-        // calculates the total cost of all 3 Items.
-        double costThree = costOfThree(avocado, milk, bread);
-        System.out.println("\nCost 3 is " + costThree);
-
-
-        // create a method (not a function) that
-        // calculates a 9.45\% sales tax on an Item.
-        double sTax = avocado.salesTaxOfItem();
-        System.out.println("\nThe total sales tax is " + sTax);
-
-        // create a function (not a method) that
-        // calculates the total cost of all 3 Items
-        // including sales tax.
-        double salesThree = threeItemSalesTax(avocado, milk, bread);
-        System.out.println("\nSales tax is " + salesThree);
     }
 
-    public static double costOfThree(Item avocado, Item milk, Item bread) {
-        return avocado.getPrice() + milk.getPrice() + bread.getPrice();
-    }
-
-    public static double threeItemSalesTax(Item avocado, Item milk, Item bread) {
-        return avocado.getPrice() + milk.getPrice() + bread.getPrice() + 9.45;
-    }
-
-    // Lab 903
-    public static void main(String[] args) {
-        System.out.println("\n\nHello, DS Lab #5 - Driver for Grade Class!\n");
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter two letter grades on separate lines: ");
-        String g1 = sc.nextLine();
-        String g2 = sc.nextLine();
-
-        int g1hours = 1;
-        int g2hours = 4;
-
-        // output the first grade, format "letter::hours"
-        output(g1hours, g1);
-
-        // output the second grade, format "letter::hours"
-        output(g2hours, g2);
-
-        // output the quality points of g1
-        int gQuality = gradeQuality(g1);
-        int gQuality1 = gradeQuality(g2);
-        System.out.println("g1 quality is " + gQuality);
-        System.out.println("g2 quality is " + gQuality1);
-
-        // calculate the grade point average
-        int GPA = (int) calculateGPA(g1, g1hours, g2, g2hours);
-        System.out.println("The GPA is " + GPA);
-
-        Grade grade1 = new Grade();
-        String grade1letter = grade1.getLetter();
-        int grade1hours = grade1.getHours();
-        System.out.println("\nGrade1 is:\t" + grade1letter + " " + grade1hours);
-
-        // create a parameterized constructor and then uncomment the following statement.
-        Grade grade2 = new Grade("F", 4);
-        System.out.println("Grade2 is:\t" + grade2.getLetter() + " " + grade2.getHours());
-
-        // create Grade.toString(). format "letter::hours"
-        System.out.println("Grade1 is " + grade1 + " and Grade2 is " + grade2);
-
-        // create gpa function, return (float) gpa of 2 Grade objects
-        float GPA1 = (float) calFloatGPA(g1, g1hours, g2, g2hours);
-        System.out.println("\nThe GPA in float is " + GPA1);
-
-        //change grade1's letter grade to "A"
-        grade1.setLetter("A");
-
-        // change grade2's hours to 0
-        grade2.setHours(0);
-        System.out.println("\nThe grade are:\t" + grade1 + " " + grade2);
-
-        // what is the average of the two grades credit hours
-        float average = (grade1.getHours() + grade2.getHours()) / 2;
-        System.out.println("\nThe average of the two grades are " + average);
-
-        // which of the grades (1 or 2) has the higher credit hour
-        System.out.print("\nThe highest grade is: ");
-        if (grade1.getHours() > grade2.getHours()) {
-            System.out.println(grade1);
-        } else {
-            System.out.println(grade2);
+    public static int Month(Homework comp, Homework math, Homework english, Homework sci, Homework read, Homework chem, Homework hist) {
+        int count = 0;
+        if (comp.getDueMonth() == math.getDueMonth()) {
+            count++;
+        } else if (math.getDueMonth() == english.getDueMonth()) {
+            count++;
+        } else if (english.getDueMonth() == sci.getDueMonth()) {
+            count++;
+        } else if (sci.getDueMonth() == read.getDueMonth()) {
+            count++;
+        } else if (read.getDueMonth() == chem.getDueMonth()) {
+            count++;
+        } else if (chem.getDueMonth() == hist.getDueMonth()) {
+            count++;
         }
+        return count;
     }
 
-    private static double calculateGPA(String g1, int g1hours, String g2, int g2hours) {
-        double gValue = gradeQuality(g1) * g1hours;
-        double gValue1 = gradeQuality(g2) * g2hours;
-        return (gValue + gValue1) / (g1hours + g2hours);
+    public static double Priority(ArrayList<Homework> classes, Homework comp, Homework math, Homework english,
+                                  Homework sci, Homework read, Homework chem, Homework hist) {
+        return (comp.getPriority() + math.getPriority() + english.getPriority() + sci.getPriority() + read.getPriority()
+                + chem.getPriority() + hist.getPriority()) / classes.size();
     }
 
-    private static int gradeQuality(String g) {
-        if (g.equalsIgnoreCase("a")) {
-            return 4;
-        } else if (g.equalsIgnoreCase("b")) {
-            return 3;
-        } else if (g.equalsIgnoreCase("c")) {
-            return 2;
-        } else if (g.equalsIgnoreCase("d")) {
-            return 1;
-        } else if (g.equalsIgnoreCase("f")) {
-            return 0;
+    public static int Today(int day, Homework comp, Homework math, Homework english, Homework sci, Homework read,
+                            Homework chem, Homework hist) {
+        int count = 0;
+        if (comp.getDueDay() == day && math.getDueDay() == day && english.getDueDay() == day && sci.getDueDay() == day
+                && read.getDueDay() == day && chem.getDueDay() == day && hist.getDueDay() == day) {
+            count++;
         } else {
             return 0;
         }
+        return count;
     }
 
-    private static void output(int hours, String letter) {
-        System.out.println(letter + "::" + hours);
+    public static int pastDue(LocalDate today, Homework comp, Homework math, Homework english, Homework sci,
+                              Homework read, Homework chem, Homework hist) {
+        return 0;
     }
 
-    private static float calFloatGPA(String g1, int g1hours, String g2, int g2hours) {
-        float gValue = gradeQuality(g1) * g1hours;
-        float gValue1 = gradeQuality(g2) * g1hours;
-        return (gValue + gValue1) / (g1hours + g2hours);
+    public static int fewDays(LocalDate today, Homework comp, Homework math, Homework english, Homework sci,
+                              Homework read, Homework chem, Homework hist) {
+        return 0;
     }
 }
