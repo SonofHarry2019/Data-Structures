@@ -151,10 +151,10 @@ public class MainActivity extends AppCompatActivity {
                 9, 2020, 3);
         Homework read = new Homework("Reading", "Quiz", 7,
                 10, 2020, 2);
-        Homework chem = new Homework("Chemistry", "Test", 8,
-                11, 2020, 3);
-        Homework hist = new Homework("Histroy", "Quiz", 9,
-                12, 2020, 2);
+        Homework chem = new Homework("Chemistry", "Test", 10,
+                24, 2019, 3);
+        Homework hist = new Homework("Histroy", "Quiz", 10,
+                25, 2019, 2);
 
         ArrayList<Homework> classes = new ArrayList<>();
         classes.add(comp);
@@ -172,11 +172,14 @@ public class MainActivity extends AppCompatActivity {
         double getPriority = Priority(classes, comp, math, english, sci, read, chem, hist);
         System.out.println("\nThe total priority is " + getPriority);
 
-        int getToday = Today(day, comp, math, english, sci, read, chem, hist);
-        System.out.println("\nThere are " + getToday + " homework's due today");
+        ArrayList<Homework> getToday = Today(classes);
+        System.out.println("\n" + getToday + " is due today");
 
-        int past = pastDue(today, comp, math, english, sci, read, chem, hist);
-        System.out.println();
+        ArrayList<Homework> passToday = pastDue(classes);
+        System.out.println("\n" + passToday + " are past there due date");
+
+        ArrayList<Homework> fewDays = fewDays(classes, 3);
+        System.out.println("\n" + fewDays + " are a due in a few days");
     }
 
     public static int Month(Homework comp, Homework math, Homework english, Homework sci, Homework read, Homework chem, Homework hist) {
@@ -203,25 +206,57 @@ public class MainActivity extends AppCompatActivity {
                 + chem.getPriority() + hist.getPriority()) / classes.size();
     }
 
-    public static int Today(int day, Homework comp, Homework math, Homework english, Homework sci, Homework read,
-                            Homework chem, Homework hist) {
-        int count = 0;
-        if (comp.getDueDay() == day && math.getDueDay() == day && english.getDueDay() == day && sci.getDueDay() == day
-                && read.getDueDay() == day && chem.getDueDay() == day && hist.getDueDay() == day) {
-            count++;
-        } else {
-            return 0;
+    public static ArrayList<Homework> Today(ArrayList<Homework> homeworks) {
+        LocalDate today = LocalDate.now();
+        System.out.println("\nToday is " + today);
+        int month = today.getMonthValue();
+        int day = today.getDayOfMonth();
+        int year = today.getYear();
+        ArrayList<Homework> dueToday = new ArrayList<>();
+        for (Homework h : homeworks) {
+            int hDay = h.getDueDay();
+            int hMonth = h.getDueMonth();
+            int hYear = h.getDueYear();
+            if (hDay == day && hMonth == month && hYear == year) {
+                dueToday.add(h);
+            }
         }
-        return count;
+        return dueToday;
     }
 
-    public static int pastDue(LocalDate today, Homework comp, Homework math, Homework english, Homework sci,
-                              Homework read, Homework chem, Homework hist) {
-        return 0;
+    public static ArrayList<Homework> pastDue(ArrayList<Homework> homeworks) {
+        LocalDate today = LocalDate.now();
+        System.out.println("\nToday is " + today);
+        int month = today.getMonthValue();
+        int day = today.getDayOfMonth();
+        int year = today.getYear();
+        ArrayList<Homework> passToday = new ArrayList<>();
+        for (Homework h : homeworks) {
+            int hDay = h.getDueDay();
+            int hMonth = h.getDueMonth();
+            int hYear = h.getDueYear();
+            if (hDay < day || hMonth < month || hYear < year) {
+                passToday.add(h);
+            }
+        }
+        return passToday;
     }
 
-    public static int fewDays(LocalDate today, Homework comp, Homework math, Homework english, Homework sci,
-                              Homework read, Homework chem, Homework hist) {
-        return 0;
+    public static ArrayList<Homework> fewDays(ArrayList<Homework> homeworks, int numDays) {
+        LocalDate today = LocalDate.now();
+        System.out.println("\nToday is " + today);
+        int month = today.getMonthValue();
+        int day = today.getDayOfMonth();
+        int year = today.getYear();
+        ArrayList<Homework> fewDays = new ArrayList<>();
+        for (Homework h : homeworks) {
+            int hDay = h.getDueDay();
+            int hMonth = h.getDueMonth();
+            int hYear = h.getDueYear();
+            if (hDay <= day + numDays && hMonth == month && hYear == year) {
+                fewDays.add(h);
+            }
+        }
+        return fewDays;
     }
 }
