@@ -97,4 +97,21 @@ public class Homework {
     public int hashCode() {
         return Objects.hash(course, name, dueMonth, dueDay, dueYear, priority);
     }
+
+    public boolean isHigherPriority(Homework homework1) {
+        return this.getPriority() > homework1.getPriority();
+    }
+
+    public boolean isBefore(Homework homework1) {
+        return this.getDueDay() < homework1.getDueDay();
+    }
+
+    public int compareTo(Homework homework1) {
+        if (this.getDueDay() < homework1.getDueDay()) {
+            return -1;
+        } else if (this.getDueDay() > homework1.getDueDay()) {
+            return 0;
+        }
+        return 1;
+    }
 }

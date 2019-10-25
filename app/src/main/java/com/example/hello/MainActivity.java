@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\nWelcome to Homework Driver");
 
         Homework homework = new Homework("CPSC2735", "test", 10,
-                3, 2019, 1);
+                3, 2019, 2);
         System.out.println("\n" + homework);
 
         Homework homework1 = new Homework("CPSC1720", "test", 11,
@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         LocalDate aWeekFromNow = today.plusDays(7);
         boolean earlier = aWeekFromNow.isBefore(today);
-
 
         if (homework.getDueDay() > 28) {
             System.out.println("\nThe date is " + today);
@@ -92,6 +91,29 @@ public class MainActivity extends AppCompatActivity {
                 7, 2020, 1);
         Homework english = new Homework("ENGL2010", "Quiz", 3,
                 8, 2020, 2);
+
+        Homework randomHomework = createRandomHomework();
+        System.out.println("\nThe random homework is " + randomHomework);
+
+        if (homework.isHigherPriority(homework1)) {
+            System.out.println("\n" + homework + " has higher priority then " + homework1);
+        } else {
+            System.out.println("\nNot higher");
+        }
+
+        if (homework.isBefore(homework1)) {
+            System.out.println("\n" + homework + " is due before " + homework1);
+        } else {
+            System.out.println("\nNot due");
+        }
+
+        System.out.println("\n*");
+        if (homework.compareTo(homework1) == 0) {
+            System.out.println(homework.compareTo(homework1));
+        } else {
+            System.out.println(homework1);
+        }
+        System.out.println("*");
 
         if (comp.getDueDay() >= 28) {
             System.out.println("\nThe date is " + today);
@@ -156,6 +178,15 @@ public class MainActivity extends AppCompatActivity {
         Homework hist = new Homework("Histroy", "Quiz", 10,
                 25, 2019, 2);
 
+//        List<String> subs = Arrays.asList("Science", "Reading", "Chemistry", "History");
+//        for (int i = 1; i <= 100; i++) {
+//            int homeW = rand.nextInt(subs.size());
+//            String collegeClass = subs.get(homeW);
+//            String uniClass = collegeClass;
+//            subject.add(uniClass);
+//        }
+//        System.out.println("The subjects are " + subject);
+
         ArrayList<Homework> classes = new ArrayList<>();
         classes.add(comp);
         classes.add(math);
@@ -180,6 +211,21 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Homework> fewDays = fewDays(classes, 3);
         System.out.println("\n" + fewDays + " are a due in a few days");
+    }
+
+    private static Homework createRandomHomework() {
+        List<String> Classes = Arrays.asList("CPSC2735", "MATH1070", "ENGL2010");
+        List<String> names = Arrays.asList("Homework", "Quiz", "Test");
+        int month = rand.nextInt(12) + 1;
+        int day = rand.nextInt(28) + 1;
+        int year = rand.nextInt(3) + 2018;
+        int priority = rand.nextInt(3) + 1;
+        int classIndex = rand.nextInt(Classes.size());
+        int nameIndex = rand.nextInt(names.size());
+        Homework retVal = new Homework(
+                Classes.get(classIndex), names.get(nameIndex),
+                month, day, year, priority);
+        return retVal;
     }
 
     public static int Month(Homework comp, Homework math, Homework english, Homework sci, Homework read, Homework chem, Homework hist) {
