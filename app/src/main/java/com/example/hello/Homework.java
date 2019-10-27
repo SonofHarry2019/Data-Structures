@@ -111,7 +111,8 @@ public class Homework {
             return -1;
         } else if (this.getDueDay() > homework1.getDueDay()) {
             return 0;
+        } else {
+            return 1;
         }
-        return 1;
     }
 }
