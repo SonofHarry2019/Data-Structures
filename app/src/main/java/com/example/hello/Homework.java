@@ -109,7 +109,7 @@ public class Homework {
     public int compareTo(Homework homework1) {
         if (this.getDueDay() < homework1.getDueDay()) {
             return -1;
-        } else if (this.getDueDay() > homework1.getDueDay()) {
+        } else if (this.getDueDay() == homework1.getDueDay()) {
             return 0;
         } else {
             return 1;
