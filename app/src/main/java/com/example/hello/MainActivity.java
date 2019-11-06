@@ -5,6 +5,9 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.company.Car;
+import com.company.Person;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,279 +29,247 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("\nWelcome to Homework Driver");
+        // Lab 1001
+        System.out.println("\nWelcome to Name Your Dog");
+        List<String> adjectives = Arrays.asList("black", "spotty", "chunky");
+        List<String> nouns = Arrays.asList("mammoth", "chew", "monkey", "xbox");
+        Set<String> myNames = new HashSet<String>();
+        Set<String> yourNames = new HashSet<String>();
+        Set<String> reNames = new HashSet<>();
 
-        Homework homework = new Homework("CPSC2735", "test", 10,
-                3, 2019, 2);
-        System.out.println("\n" + homework);
-
-        Homework homework1 = new Homework("CPSC1720", "test", 11,
-                4, 2019, 1);
-        System.out.println("\n" + homework1);
-
-        Homework homework2 = new Homework("CPSC1710", "test", 12,
-                5, 2019, 1);
-        System.out.println("\n" + homework2);
-
-        LocalDate today = LocalDate.now();
-        System.out.println("\nToday is " + today);
-        int month = today.getMonthValue();
-        int day = today.getDayOfMonth();
-        int year = today.getYear();
-
-        LocalDate aWeekFromNow = today.plusDays(7);
-        boolean earlier = aWeekFromNow.isBefore(today);
-
-        if (homework.getDueDay() > 28) {
-            System.out.println("\nThe date is " + today);
-        } else {
-            System.out.println("\nThe date is " + homework);
-        }
-
-        if (homework1.getDueDay() > 28) {
-            System.out.println("\nThe date is " + today);
-        } else {
-            System.out.println("\nThe date is " + homework1);
-        }
-
-        if (homework2.getDueDay() > 28) {
-            System.out.println("\nThe date is " + today);
-        } else {
-            System.out.println("\nThe date is " + homework2);
-        }
-
-        if (homework.getDueYear() >= 2018 && homework.getDueYear() <= 2020) {
-            System.out.println("\nThe year is " + today);
-        } else {
-            System.out.println("\nThe year is " + homework);
-        }
-
-        if (homework1.getDueYear() >= 2018 && homework1.getDueYear() <= 2020) {
-            System.out.println("\nThe year is " + today);
-        } else {
-            System.out.println("\nThe year is " + homework1);
-        }
-
-        if (homework2.getDueYear() >= 2018 && homework2.getDueYear() <= 2020) {
-            System.out.println("\nThe due date is " + today);
-        } else {
-            System.out.println("\nThe date is " + homework2);
-        }
-
-        Homework comp = new Homework("CPSC2735", "Test", 1,
-                6, 2020, 3);
-        Homework math = new Homework("MATH1070", "Homework", 2,
-                7, 2020, 1);
-        Homework english = new Homework("ENGL2010", "Quiz", 3,
-                8, 2020, 2);
-
-        Homework randomHomework = createRandomHomework();
-        System.out.println("\nThe random homework is " + randomHomework);
-
-        if (homework.isHigherPriority(homework1)) {
-            System.out.println("\n" + homework + " has higher priority then " + homework1);
-        } else {
-            System.out.println("\nNot higher");
-        }
-
-        if (homework.isBefore(homework1)) {
-            System.out.println("\n" + homework + " is due before " + homework1);
-        } else {
-            System.out.println("\nNot due");
-        }
-
-        System.out.println("\nThe compareTo value is " + homework.compareTo(homework1));
-
-        if (comp.getDueDay() >= 28) {
-            System.out.println("\nThe date is " + today);
-        } else {
-            System.out.println("\nThe date is " + comp);
-        }
-
-        if (math.getDueDay() >= 28) {
-            System.out.println("\nThe date is " + today);
-        } else {
-            System.out.println("\nThe date is " + math);
-        }
-
-        if (english.getDueDay() >= 28) {
-            System.out.println("\nThe date is " + today);
-        } else {
-            System.out.println("\nThe date is " + english);
-        }
-
-        if (comp.getDueYear() >= 2018 && comp.getDueYear() <= 2020) {
-            System.out.println("\nThe year is " + today);
-        } else {
-            System.out.println("\nThe year is " + comp);
-        }
-
-        if (math.getDueYear() >= 2018 && math.getDueYear() <= 2020) {
-            System.out.println("\nThe year is " + today);
-        } else {
-            System.out.println("\nThe year is " + math);
-        }
-
-        if (english.getDueYear() >= 2018 && english.getDueYear() <= 2020) {
-            System.out.println("\nThe year is " + today);
-        } else {
-            System.out.println("\nThe year is " + english);
-        }
-
-        if (comp.getPriority() >= 1 && comp.getPriority() <= 3) {
-            System.out.println("\nThe priority is " + today);
-        } else {
-            System.out.println("\nThe priority is " + comp);
-        }
-
-        if (math.getPriority() >= 1 && math.getPriority() <= 3) {
-            System.out.println("\nThe priority is " + today);
-        } else {
-            System.out.println("\nThe priority is " + math);
-        }
-
-        if (english.getPriority() >= 1 && english.getPriority() <= 3) {
-            System.out.println("\nThe priority is " + today);
-        } else {
-            System.out.println("\nThe priority is " + english);
-        }
-
-        Homework sci = new Homework("Science", "Test", 4,
-                9, 2020, 3);
-        Homework read = new Homework("Reading", "Quiz", 7,
-                10, 2020, 2);
-        Homework chem = new Homework("Chemistry", "Test", 10,
-                24, 2019, 3);
-        Homework hist = new Homework("Histroy", "Quiz", 10,
-                25, 2019, 2);
-
-        List<String> subs = Arrays.asList("Science", "Reading", "Chemistry", "History");
-        Set<String> subject = new HashSet<>();
-        for (int i = 1; i < subs.size(); i++) {
-            int homeW = rand.nextInt(subs.size());
-            String collegeClass = subs.get(homeW);
-            String uniClass = collegeClass;
-            subject.add(uniClass);
-        }
-        System.out.println("\n*");
-        System.out.println("The subjects are " + subject);
-        System.out.println("*");
-
-        ArrayList<Homework> classes = new ArrayList<>();
-        classes.add(comp);
-        classes.add(math);
-        classes.add(english);
-        classes.add(sci);
-        classes.add(read);
-        classes.add(chem);
-        classes.add(hist);
-        System.out.println("\nThere are " + classes.size() + " classes");
-
-        int getMonth = Month(comp, math, english, sci, read, chem, hist);
-        System.out.println("\nThere are " + getMonth + " months");
-
-        double getPriority = Priority(classes, comp, math, english, sci, read, chem, hist);
-        System.out.println("\nThe total average priority is " + getPriority);
-
-        ArrayList<Homework> getToday = Today(classes);
-        System.out.println("\n" + getToday + " is due today");
-
-        ArrayList<Homework> passToday = pastDue(classes);
-        System.out.println("\n" + passToday + " are past there due date");
-
-        ArrayList<Homework> fewDays = fewDays(classes, 3);
-        System.out.println("\n" + fewDays + " are a due in a few days");
-    }
-
-    private static Homework createRandomHomework() {
-        List<String> Classes = Arrays.asList("CPSC2735", "MATH1070", "ENGL2010");
-        List<String> names = Arrays.asList("Homework", "Quiz", "Test");
-        int month = rand.nextInt(12) + 1;
-        int day = rand.nextInt(28) + 1;
-        int year = rand.nextInt(3) + 2018;
-        int priority = rand.nextInt(3) + 1;
-        int classIndex = rand.nextInt(Classes.size());
-        int nameIndex = rand.nextInt(names.size());
-        Homework retVal = new Homework(
-                Classes.get(classIndex), names.get(nameIndex),
-                month, day, year, priority);
-        return retVal;
-    }
-
-    public static int Month(Homework comp, Homework math, Homework english, Homework sci, Homework read, Homework chem, Homework hist) {
-        int count = 0;
-        if (comp.getDueMonth() == math.getDueMonth()) {
-            count++;
-        } else if (math.getDueMonth() == english.getDueMonth()) {
-            count++;
-        } else if (english.getDueMonth() == sci.getDueMonth()) {
-            count++;
-        } else if (sci.getDueMonth() == read.getDueMonth()) {
-            count++;
-        } else if (read.getDueMonth() == chem.getDueMonth()) {
-            count++;
-        } else if (chem.getDueMonth() == hist.getDueMonth()) {
-            count++;
-        }
-        return count;
-    }
-
-    public static double Priority(ArrayList<Homework> classes, Homework comp, Homework math, Homework english,
-                                  Homework sci, Homework read, Homework chem, Homework hist) {
-        return (comp.getPriority() + math.getPriority() + english.getPriority() + sci.getPriority() + read.getPriority()
-                + chem.getPriority() + hist.getPriority()) / classes.size();
-    }
-
-    public static ArrayList<Homework> Today(ArrayList<Homework> homeworks) {
-        LocalDate today = LocalDate.now();
-        System.out.println("\nToday is " + today);
-        int month = today.getMonthValue();
-        int day = today.getDayOfMonth();
-        int year = today.getYear();
-        ArrayList<Homework> dueToday = new ArrayList<>();
-        for (Homework h : homeworks) {
-            int hDay = h.getDueDay();
-            int hMonth = h.getDueMonth();
-            int hYear = h.getDueYear();
-            if (hDay == day && hMonth == month && hYear == year) {
-                dueToday.add(h);
+        while (reNames.size() == 0) {
+            Random rand = new Random();
+            for (int i = 1; i <= 100; i++) {
+                int adj = rand.nextInt(adjectives.size());
+                int n = rand.nextInt(nouns.size());
+                String aName = adjectives.get(adj);
+                String nName = nouns.get(n);
+                String dogName = aName + " " + nName;
+                myNames.add(dogName);
             }
+            System.out.println("\nMy names have " + myNames.size() + " unique names");
+
+            for (int i = 1; i <= 100; i++) {
+                int adj = rand.nextInt(adjectives.size());
+                int n = rand.nextInt(nouns.size());
+                String aName = adjectives.get(adj);
+                String nName = nouns.get(n);
+                String dogName = aName + " " + nName;
+                yourNames.add(dogName);
+            }
+            System.out.println("\nYour names have " + yourNames.size() + " unique names");
+
+            for (String name : myNames) {
+                if (yourNames.contains(name)) {
+                    reNames.add(name);
+                }
+            }
+            System.out.println("\nThere are " + reNames.size() + " common names");
         }
-        return dueToday;
+
+        if (reNames.size() == 1) {
+            System.out.println("\nCongrats, name of the dog is " + reNames);
+        }
+
+        Queue<String> nameQ = new LinkedList<>(reNames);
+        while (nameQ.size() > 1) {
+            Random ran = new Random();
+            int turns = ran.nextInt(100) - 1;
+            for (int i = 0; i < turns; i++) {
+                String n = nameQ.remove();
+                nameQ.add(n);
+            }
+            nameQ.remove();
+        }
+        System.out.println("\nCongrats, the name for your dog is " + nameQ);
     }
 
-    public static ArrayList<Homework> pastDue(ArrayList<Homework> homeworks) {
-        LocalDate today = LocalDate.now();
-        System.out.println("\nToday is " + today);
-        int month = today.getMonthValue();
-        int day = today.getDayOfMonth();
-        int year = today.getYear();
-        ArrayList<Homework> passToday = new ArrayList<>();
-        for (Homework h : homeworks) {
-            int hDay = h.getDueDay();
-            int hMonth = h.getDueMonth();
-            int hYear = h.getDueYear();
-            if (hDay < day || hMonth < month || hYear < year) {
-                passToday.add(h);
-            }
+    // 0919
+    public static void main(String[] args) {
+        System.out.println("\nWelcome to the Drive Thru");
+
+        ArrayList<Car> listOfCars = new ArrayList<>();
+        Car car = new Car(24);
+        listOfCars.add(car);
+        listOfCars.add(new Car(25));
+        listOfCars.add(new Car(26));
+        System.out.println("\nList of cars are " + listOfCars.size() + " unique numbers " + listOfCars);
+
+        listOfCars.add(new Car(27));
+        System.out.println("\nList of cars are " + listOfCars.size() + " new unique numbers " + listOfCars);
+
+        listOfCars.add(listOfCars.size() / 2, new Car(28));
+        System.out.println("\nList of cars are " + listOfCars.size() + " first new unique numbers " + listOfCars);
+
+        listOfCars.add(0, new Car(29));
+        System.out.println("\nList of cars are " + listOfCars.size() + " second new unique numbers " + listOfCars);
+
+        listOfCars.remove(listOfCars.size() - 1);
+        System.out.println("\nList of cars are " + listOfCars.size() + " new removed unique numbers " + listOfCars);
+
+        listOfCars.remove(listOfCars.size() / 2);
+        System.out.println("\nList of cars are " + listOfCars.size() + " first removed unique numbers " + listOfCars);
+
+        listOfCars.remove(0);
+        System.out.println("\nList of cars are " + listOfCars.size() + " second removed unique numbers " + listOfCars);
+
+        Stack<Car> stackOfCars = new Stack<>();
+        stackOfCars.push(new Car(30));
+        stackOfCars.push(new Car(31));
+        stackOfCars.push(new Car(32));
+        System.out.println("\nStack of cars are " + stackOfCars.size() + " unique stack " + stackOfCars);
+
+        stackOfCars.push(new Car(33));
+        System.out.println("\nStack of cars are " + stackOfCars.size() + " first unique stack " + stackOfCars);
+
+        stackOfCars.pop();
+        System.out.println("\nStack of cars are " + stackOfCars.size() + " first removed unique stack " + stackOfCars);
+
+        Queue<Car> queueOfCars = new LinkedList<>();
+        queueOfCars.add(new Car(34));
+        queueOfCars.add(new Car(35));
+        queueOfCars.add(new Car(36));
+        System.out.println("\n" + queueOfCars.size() + " unique queues " + queueOfCars);
+
+        queueOfCars.add(new Car(37));
+        System.out.println("\nQueue of cars are " + queueOfCars.size() + " new unique queues " + queueOfCars);
+
+        queueOfCars.remove();
+        System.out.println("\nQueue of cars are " + queueOfCars.size() + " removed queues " + queueOfCars);
+
+        Deque<Car> dequeOfCars = new LinkedList<>();
+        dequeOfCars.add(new Car(38));
+        dequeOfCars.add(new Car(39));
+        dequeOfCars.add(new Car(40));
+        System.out.println("\n" + dequeOfCars.size() + " unique deques " + dequeOfCars);
+
+        dequeOfCars.add(new Car(41));
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " new unique deques " + dequeOfCars);
+
+        dequeOfCars.addLast(new Car(42));
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " first unique deques " + dequeOfCars);
+
+        dequeOfCars.addFirst(new Car(43));
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " second unique deques " + dequeOfCars);
+
+        dequeOfCars.removeFirst();
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " removed unique deques " + dequeOfCars);
+
+        dequeOfCars.removeLast();
+        System.out.println("\nDeque of cars are " + dequeOfCars.size() + " removed unique deques " + dequeOfCars);
+
+        Queue<Car> driveThru = new LinkedList<>();
+        driveThru.add(new Car(1));
+        driveThru.add(new Car(2));
+        driveThru.add(new Car(3));
+        driveThru.add(new Car(4));
+        driveThru.add(new Car(5));
+        driveThru.add(new Car(6));
+        driveThru.add(new Car(7));
+        driveThru.add(new Car(8));
+        driveThru.add(new Car(9));
+        driveThru.add(new Car(10));
+        System.out.println("\n" + driveThru);
+        System.out.println("\nThere are " + driveThru.size() + " cars in the Mcdonald drive thru");
+
+        Random rand = new Random();
+        int ranNumber = rand.nextInt(3);
+        for (int i = 0; i < ranNumber; i++) {
+            driveThru.remove();
         }
-        return passToday;
+        System.out.println("\nThere are now " + driveThru.size() + " cars in the drive thru");
+
+        for (int i = 0; i < 5; i++) {
+            ranNumber = rand.nextInt(3);
+            for (int j = 0; j < ranNumber; j++) {
+                driveThru.remove();
+            }
+            System.out.println("\nThere are now " + driveThru.size() + " cars in the drive thru");
+        }
     }
 
-    public static ArrayList<Homework> fewDays(ArrayList<Homework> homeworks, int numDays) {
-        LocalDate today = LocalDate.now();
-        System.out.println("\nToday is " + today);
-        int month = today.getMonthValue();
-        int day = today.getDayOfMonth();
-        int year = today.getYear();
-        ArrayList<Homework> fewDays = new ArrayList<>();
-        for (Homework h : homeworks) {
-            int hDay = h.getDueDay();
-            int hMonth = h.getDueMonth();
-            int hYear = h.getDueYear();
-            if (hDay <= day + numDays && hMonth == month && hYear == year) {
-                fewDays.add(h);
-            }
-        }
-        return fewDays;
+    // 0917
+    public static void main1(String[] args) {
+        System.out.println("\nWelcome to DataStructure Driver");
+
+        ArrayList<Person> people = new ArrayList<>();
+        LocalDate d1 = LocalDate.of(1995, 1, 19);
+        Person p1 = new Person("Haaris", d1);
+        people.add(p1);
+        people.add(new Person("Alastair", LocalDate.of(1996, 2, 20)));
+        people.add(new Person("Bart", LocalDate.now()));
+
+        System.out.println("\nPeople: " + people);
+
+        System.out.println("\nFirst person: " + people.get(0));
+
+        people.add(0, new Person("Crowley", LocalDate.of(1997, 3, 21)));
+        System.out.println("\nThe new list is: " + people);
+
+        people.add(new Person("Dean", LocalDate.of(1998, 4, 22)));
+        System.out.println("\nThe updated list is: " + people);
+
+        people.remove(people.size() / 2);
+        System.out.println("\nThe removed list is: " + people);
+
+        int size = people.size();
+        System.out.println("\nThe amount of value are " + size);
+
+        Person last = people.get(people.size() - 1);
+        System.out.println("\nLast person: " + last);
+
+        Stack<Person> stackOfPeople = new Stack<>();
+        stackOfPeople.push(new Person("Ethan", LocalDate.of(1999, 5, 23)));
+        stackOfPeople.push(new Person("Frank", LocalDate.of(2000, 6, 24)));
+        stackOfPeople.push(new Person("Grant", LocalDate.of(2001, 7, 25)));
+        System.out.println("\nStack of people " + stackOfPeople);
+
+        System.out.println("\nFirst person in a stack " + stackOfPeople.get(0));
+
+        stackOfPeople.add(0, new Person("Henry", LocalDate.of(2002, 8, 26)));
+        System.out.println("\nNew stack of people " + stackOfPeople);
+
+        stackOfPeople.push(new Person("Ivan", LocalDate.of(2003, 9, 27)));
+        System.out.println("\nSecond new stack of people " + stackOfPeople);
+
+        stackOfPeople.remove(stackOfPeople.size() / 2);
+        System.out.println("\nMiddle removed sack of people " + stackOfPeople);
+
+        System.out.println("\nThere are " + stackOfPeople.size() + " people in the stack");
+
+        System.out.println("\nLast person in the stack is: " + stackOfPeople.get(stackOfPeople.size() - 1));
+
+        Queue queueOfPeople = new LinkedList();
+        queueOfPeople.add(new Person("Jack", LocalDate.of(2004, 10, 28)));
+        queueOfPeople.add(new Person("Kyle", LocalDate.of(2005, 11, 29)));
+        queueOfPeople.add(new Person("Larry", LocalDate.of(2006, 12, 30)));
+        System.out.println("\nThe queue list is " + queueOfPeople);
+
+        System.out.println("\nThe first name in the queue is " + queueOfPeople.peek());
+
+        queueOfPeople.add(new Person("Manny", LocalDate.of(2007, 1, 31)));
+
+        System.out.println("\nThere are " + queueOfPeople.size() + " queues in the list");
+
+        Deque<Person> dequeOfPeople = new LinkedList<>();
+        dequeOfPeople.add(new Person("Nancy", LocalDate.of(2008, 2, 1)));
+        dequeOfPeople.add(new Person("Oliver", LocalDate.of(2009, 3, 2)));
+        dequeOfPeople.add(new Person("Peter", LocalDate.of(2009, 4, 3)));
+        System.out.println("\nThe names in the deque: " + dequeOfPeople);
+
+        System.out.println("\nThe first name in the queue is " + dequeOfPeople.peek());
+
+        dequeOfPeople.addFirst(new Person("Quill", LocalDate.of(2010, 5, 4)));
+        ;
+        System.out.println("\nThe new list is " + dequeOfPeople);
+
+        dequeOfPeople.add(new Person("Ryan", LocalDate.of(2011, 6, 5)));
+
+        dequeOfPeople.add((new Person("Sam", LocalDate.of(2012, 7, 6))));
+        System.out.println("\nThe second list is " + dequeOfPeople);
+
+        System.out.println("\nThe amount of deques are " + dequeOfPeople.size());
+
+        System.out.println("\nThe last name is " + dequeOfPeople.peekLast());
+    }
 }
